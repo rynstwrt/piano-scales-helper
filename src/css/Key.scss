@@ -1,0 +1,45 @@
+$white-key-width: 35px;
+$white-key-height: 150px;
+
+$black-key-width: 20px;
+$black-key-height: 80px;
+
+
+.piano-key
+{
+
+}
+
+
+.white-key
+{
+    background-color: white;
+    flex: 1;
+    //min-width: $white-key-width;
+    //height: $white-key-height;
+
+    &:not(&:first-of-type)
+    {
+        border-left: 2px solid black;
+    }
+
+    &:not(&:last-of-type)
+    {
+        border-right: 2px solid black;
+    }
+}
+
+
+.black-key
+{
+    background-color: black;
+    min-width: $black-key-width;
+    height: $black-key-height;
+    //flex: 1;
+    margin: 1px;
+
+    &.invisible
+    {
+        visibility: hidden;
+    }
+}

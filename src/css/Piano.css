@@ -1,0 +1,20 @@
+.piano {
+  position: relative;
+  width: 500px;
+  height: 150px;
+  border: 1px solid red;
+}
+.piano .piano-section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.piano .piano-section#white-keys {
+  justify-content: center;
+}
+.piano .piano-section#black-keys {
+  justify-content: space-around;
+}
+
+/*# sourceMappingURL=Piano.css.map */

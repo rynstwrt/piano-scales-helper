@@ -1,11 +1,10 @@
 import '../css/App.css';
+import Piano from "./Piano";
 
 
-function App()
+export default function App()
 {
     return (
-        <div></div>
+        <Piano />
     );
 }
-
-export default App;

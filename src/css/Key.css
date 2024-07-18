@@ -1,0 +1,22 @@
+.white-key {
+  background-color: white;
+  flex: 1;
+}
+.white-key:not(.white-key:first-of-type) {
+  border-left: 2px solid black;
+}
+.white-key:not(.white-key:last-of-type) {
+  border-right: 2px solid black;
+}
+
+.black-key {
+  background-color: black;
+  min-width: 20px;
+  height: 80px;
+  margin: 1px;
+}
+.black-key.invisible {
+  visibility: hidden;
+}
+
+/*# sourceMappingURL=Key.css.map */
