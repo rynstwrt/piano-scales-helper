@@ -1,5 +1,5 @@
 import "../../css/Controls.css";
-import {useState} from "react";
+import AudioPlayer from "../AudioPlayer";
 
 
 const NOTES_WITH_NO_SHARPS = ["B", "E"];
@@ -7,9 +7,6 @@ const NOTES_WITH_NO_SHARPS = ["B", "E"];
 
 export default function Controls({ setScale })
 {
-    const [volume, setVolume] = useState(50);
-
-
     function validateAccidental()
     {
         const note = document.querySelector("#note-select").value;
@@ -45,20 +42,30 @@ export default function Controls({ setScale })
     }
 
 
-    function onSubmitButtonClick()
+    function getScaleFromElements()
     {
         const keyNote = document.querySelector("#note-select").value;
         const accidental = document.querySelector("#accidental-select").value;
         const isMinor = document.querySelector("#major-minor-select").value === "minor";
+        return `${keyNote}${accidental}${isMinor ? "m" : ""}`;
+    }
 
-        const key = `${keyNote}${accidental}${isMinor ? "m" : ""}`;
-        setScale(key);
+
+    function onSubmitButtonClick()
+    {
+        setScale(getScaleFromElements());
     }
 
 
     function onVolumeSliderChange(event)
     {
-        setVolume(event.target.value);
+        AudioPlayer.setVolume(event.target.value);
+    }
+
+
+    function onPlayButtonClick()
+    {
+        AudioPlayer.playScale(getScaleFromElements());
     }
 
 
@@ -96,10 +103,10 @@ export default function Controls({ setScale })
                 <div className={"control-row-left-section"}>
                     <label>Audio:</label>
                     <input id={"volume-range"} type={"range"} min={0} max={100} defaultValue={50} step={1} onChange={onVolumeSliderChange} />
-                    <output id={"volume-range-output"}>{volume}</output>
+                    {/*<output id={"volume-range-output"}>{volume}</output>*/}
                 </div>
 
-                <button className={"action-button"} id={"play-button"}>Play</button>
+                <button className={"action-button"} id={"play-button"} onClick={onPlayButtonClick}>Play</button>
             </div>
         </div>
     );
