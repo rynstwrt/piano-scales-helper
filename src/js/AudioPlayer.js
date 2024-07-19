@@ -44,8 +44,9 @@ export default class AudioPlayer
         }
         else
         {
-            this.#sequence.stop(Tone.now());
-            Tone.getTransport().pause(Tone.now());
+            // cancel, clear, dispose, stop,
+            this.#sequence.stop();
+            Tone.getTransport().stop();
         }
 
         const scaleNotes = SCALES[scale];
