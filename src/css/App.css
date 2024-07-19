@@ -17,4 +17,11 @@ body {
   background-color: #1c1c1c;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /*# sourceMappingURL=App.css.map */

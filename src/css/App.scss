@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import "./partials/constants";
 
 
 *
@@ -21,5 +22,14 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1c1c1c;
+    background-color: $background-color;
+}
+
+
+main
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

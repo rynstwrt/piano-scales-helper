@@ -1,10 +1,15 @@
 import '../css/App.css';
 import Piano from "./Piano";
+import {useState} from "react";
+import Controls from "./Controls";
 
 
 export default function App()
 {
     return (
-        <Piano />
+        <main>
+            <Piano />
+            <Controls />
+        </main>
     );
 }

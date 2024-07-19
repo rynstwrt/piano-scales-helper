@@ -1,0 +1,88 @@
+@import "partials/constants";
+
+
+#controls
+{
+    //width: 300px;
+    //height: 100px;
+    background-color: $lighter-background;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 5px;
+
+    .control-row
+    {
+        display: flex;
+        align-items: center;
+        font-family: $font-1;
+        padding: 7px;
+
+        label
+        {
+            color: white;
+            margin-right: 5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        #key-select
+        {
+            font-family: inherit;
+            width: 150px;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+
+        #sharp-flat-buttons
+        {
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+
+            .sharp-flat-button
+            {
+                font-family: inherit;
+                $size: 25px;
+                width: $size;
+                height: $size;
+                margin: 0 3px;
+                background-color: white;
+                border-radius: 5px;
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+                //color: red;
+                z-index: 0;
+                transition: background-color .15s ease-in-out;
+
+                &.selected
+                {
+                    background-color: $highlight-color;
+                }
+
+                &:before
+                {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background-color: black;
+                    z-index: -1;
+                    opacity: 0;
+                    transition: opacity .15s ease-in-out;
+                }
+
+                &:hover
+                {
+                    &:before
+                    {
+                        opacity: 0.17;
+                    }
+                }
+            }
+        }
+    }
+}

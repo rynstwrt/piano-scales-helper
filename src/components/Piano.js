@@ -15,10 +15,10 @@ export default function Piano()
     const [scale, setScale] = useState("A#");
 
 
-    function changeScale(newScale)
-    {
-        setScale(newScale);
-    }
+    // function changeScale(newScale)
+    // {
+    //     setScale(newScale);
+    // }
 
 
     let firstScaleNoteLocation = null;
