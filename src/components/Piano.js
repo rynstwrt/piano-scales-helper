@@ -21,7 +21,7 @@ export default function Piano()
     const highlightedWhiteKeyIndexes = [];
     const highlightedBlackKeyIndexes = [];
 
-    function findHighlightedWhiteKeys()
+    function findHighlightedWhiteKeys(calledFirst)
     {
         for (let i = 0; i < NUM_WHITE_KEYS; ++i)
         {
@@ -30,7 +30,8 @@ export default function Piano()
             if (!foundFirstNote && scaleNotes[0] === note)
                 foundFirstNote = i;
 
-            const shouldHighlight = scale && foundFirstNote && foundFirstNote <= i && scaleNotes.includes(note) && !usedScaleNotes.includes(note);
+            const callOrderCondition = calledFirst ? foundFirstNote < i : foundFirstNote <= i;
+            const shouldHighlight = scale && foundFirstNote && callOrderCondition && scaleNotes.includes(note) && !usedScaleNotes.includes(note);
             if (shouldHighlight)
             {
                 highlightedWhiteKeyIndexes.push(i);
@@ -39,7 +40,7 @@ export default function Piano()
         }
     }
 
-    function findHighlightedBlackKeys()
+    function findHighlightedBlackKeys(calledFirst)
     {
         let blackKeyNoteCounter = 0;
 
@@ -61,7 +62,8 @@ export default function Piano()
             if (!foundFirstNote && scaleNotes[0] === note)
                 foundFirstNote = i;
 
-            const shouldHighlight = scale && foundFirstNote && foundFirstNote <= i && scaleNotes.includes(note) && !usedScaleNotes.includes(note);
+            const callOrderCondition = calledFirst ? foundFirstNote <= i : foundFirstNote < i;
+            const shouldHighlight = scale && foundFirstNote && callOrderCondition && scaleNotes.includes(note) && !usedScaleNotes.includes(note);
             if (shouldHighlight)
             {
                 highlightedBlackKeyIndexes.push(i);
