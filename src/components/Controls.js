@@ -21,9 +21,19 @@ export default function Controls({ setScale })
     }
 
 
+    function onSubmitButtonClick()
+    {
+        const keyNote = document.querySelector("#note-select").value;
+        const accidental = document.querySelector("#accidental-select").value;
+        const isMinor = document.querySelector("#minor-button").classList.contains("selected");
+
+        const key = `${keyNote}${accidental}${isMinor ? "m" : ""}`;
+        setScale(key);
+    }
+
+
     function onVolumeSliderChange(event)
     {
-        setScale("A#")
         setVolume(event.target.value);
     }
 
@@ -34,8 +44,8 @@ export default function Controls({ setScale })
                 <div className={"control-row-left-section"}>
                     <label>Key:</label>
                     <select id={"note-select"}>
-                        <option value={"A"}>A</option>
-                        <option value={"B"}>B</option>
+                        <option>A</option>
+                        <option>B</option>
                         <option>C</option>
                         <option>D</option>
                         <option>E</option>
@@ -43,14 +53,14 @@ export default function Controls({ setScale })
                         <option>G</option>
                     </select>
                     <select id={"accidental-select"}>
-                        <option>♮</option>
-                        <option>#</option>
-                        <option>b</option>
+                        <option value={""}>♮</option>
+                        <option value={"#"}>#</option>
+                        <option value={"#"}>b</option>
                     </select>
-                    <button id={"minor-button"} onClick={onMinorButtonClick}>Minor</button>
+                    <button id={"minor-button"} onClick={onMinorButtonClick}>Is Minor</button>
                 </div>
 
-                <button className={"action-button"} id={"submit-button"}>Submit</button>
+                <button className={"action-button"} id={"submit-button"} onClick={onSubmitButtonClick}>Submit</button>
             </div>
 
 

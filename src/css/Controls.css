@@ -40,10 +40,10 @@ button {
   letter-spacing: 1px;
 }
 #controls .control-row .action-button {
-  margin-left: 50px;
+  margin-left: 25px;
   font-weight: 500;
   background-color: transparent;
-  width: 100px;
+  width: 150px;
   height: 30px;
   border: 1px solid #00e0b7;
   color: #00e0b7;
@@ -61,7 +61,7 @@ button {
   width: 45px;
 }
 #scale-control-row #minor-button {
-  padding: 0 5px;
+  padding: 0 15px;
   font-weight: 500;
   background-color: white;
   position: relative;
