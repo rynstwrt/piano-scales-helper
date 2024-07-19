@@ -8,6 +8,12 @@ select
     font-size: 14px;
     padding: 5px 5px;
     border-radius: 5px;
+    text-transform: uppercase;
+
+    &, option
+    {
+        text-align: center;
+    }
 }
 
 
@@ -40,7 +46,7 @@ button
         {
             display: flex;
             align-items: center;
-            width: 100%;
+            //width: 100%;
         }
 
         label
@@ -54,7 +60,8 @@ button
 
         .action-button
         {
-            margin-left: 25px;
+            //margin-left: 25px;
+            margin-left: 10px;
             font-weight: 500;
             background-color: transparent;
             width: 150px;
@@ -75,55 +82,9 @@ button
 
 #scale-control-row
 {
-    #note-select
+    #note-select, #accidental-select
     {
-        width: 150px;
-    }
-
-    #accidental-select
-    {
-        width: 45px;
-    }
-
-    #minor-button
-    {
-        //width: 100px;
-        //width: 150px;
-        padding: 0 15px;
-        font-weight: 500;
-        background-color: white;
-        position: relative;
-        overflow: hidden;
-        z-index: 0;
-        box-sizing: content-box;
-        transition: background-color .15s ease-in-out;
-
-        &.selected
-        {
-            background-color: $accent-color;
-        }
-
-        &:before
-        {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: black;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity .15s ease-in-out;
-        }
-
-        &:hover
-        {
-            &:before
-            {
-                opacity: 0.17;
-            }
-        }
+        width: 50px;
     }
 
     select
@@ -134,6 +95,16 @@ button
     select, #minor-button
     {
         height: 25px;
+    }
+
+    #major-minor-select
+    {
+        font-size: 14px;
+    }
+
+    #random-button
+    {
+        width: 100px;
     }
 }
 
