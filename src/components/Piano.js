@@ -14,123 +14,106 @@ export default function Piano()
 {
     const [scale, setScale] = useState("A#");
 
-    const scaleNotes = SCALES[scale];
-    const usedScaleNotes = [];
-    let foundFirstNote = false;
 
-    const highlightedWhiteKeyIndexes = [];
-    const highlightedBlackKeyIndexes = [];
-
-    function findHighlightedWhiteKeys(calledFirst)
+    function changeScale(newScale)
     {
+        setScale(newScale);
+    }
+
+
+    let firstScaleNoteLocation = null;
+    
+    
+    const whiteKeys = [];
+    function doWhiteKeys()
+    {
+        const whiteKeyNotesInScale = SCALES[scale].filter(note => !note.includes("#"));
+        const highlightedWhiteKeys = [];
+        let firstWhiteKeyFound = false;
         for (let i = 0; i < NUM_WHITE_KEYS; ++i)
         {
             const note = WHITE_KEY_NOTES[i % WHITE_KEY_NOTES.length];
 
-            if (!foundFirstNote && scaleNotes[0] === note)
-                foundFirstNote = i;
+            if (!firstScaleNoteLocation && SCALES[scale][0] === note)
+                firstScaleNoteLocation = i;
 
-            const callOrderCondition = calledFirst ? foundFirstNote < i : foundFirstNote <= i;
-            const shouldHighlight = scale && foundFirstNote && callOrderCondition && scaleNotes.includes(note) && !usedScaleNotes.includes(note);
-            if (shouldHighlight)
-            {
-                highlightedWhiteKeyIndexes.push(i);
-                usedScaleNotes.push(note);
-            }
+            if (whiteKeyNotesInScale[0] === note)
+                firstWhiteKeyFound = true;
+
+            const shouldBeHighlighted = SCALES[scale].includes(note)
+                && (!firstScaleNoteLocation || i >= firstScaleNoteLocation)
+                && !highlightedWhiteKeys.includes(note)
+                && firstWhiteKeyFound
+                && SCALES[scale].includes(note);
+
+            if (shouldBeHighlighted)
+                highlightedWhiteKeys.push(note);
+
+            whiteKeys.push(<Key
+                key={i}
+                color={"white"}
+                note={note}
+                highlighted={shouldBeHighlighted}
+            />);
         }
     }
 
-    function findHighlightedBlackKeys(calledFirst)
-    {
-        let blackKeyNoteCounter = 0;
 
+    const blackKeys = [];
+    function doBlackKeys()
+    {
+        const blackKeyNotesInScale = SCALES[scale].filter(note => note.includes("#"));
+        const highlightedBlackKeys = [];
+        let firstBlackKeyFound = false;
+        let blackKeyNoteCounter = 0;
         for (let i = 0; i < NUM_WHITE_KEYS; ++i)
         {
             const isInvisibleKey = INVISIBLE_BLACK_KEY_INDEXES.includes(i);
-            if (isInvisibleKey)
-            {
-                continue;
-            }
-
             const note = isInvisibleKey ? null : BLACK_KEY_NOTES[blackKeyNoteCounter % BLACK_KEY_NOTES.length]
 
-/*
+            if (!firstScaleNoteLocation && SCALES[scale][0] === note)
+                firstScaleNoteLocation = blackKeyNoteCounter;
 
-            const note = BLACK_KEY_NOTES[i % BLACK_KEY_NOTES.length];
-*/
+            if (blackKeyNotesInScale[0] === note)
+                firstBlackKeyFound = true;
 
-            if (!foundFirstNote && scaleNotes[0] === note)
-                foundFirstNote = i;
+            // const is
 
-            const callOrderCondition = calledFirst ? foundFirstNote <= i : foundFirstNote < i;
-            const shouldHighlight = scale && foundFirstNote && callOrderCondition && scaleNotes.includes(note) && !usedScaleNotes.includes(note);
-            if (shouldHighlight)
-            {
-                highlightedBlackKeyIndexes.push(i);
-                usedScaleNotes.push(note);
-            }
 
-            ++blackKeyNoteCounter;
+            const shouldBeHighlighted = !isInvisibleKey
+                && (!firstScaleNoteLocation || blackKeyNoteCounter >= firstScaleNoteLocation)
+                && !highlightedBlackKeys.includes(note)
+                && firstBlackKeyFound
+                && SCALES[scale].includes(note);
+
+            if (shouldBeHighlighted)
+                highlightedBlackKeys.push(note);
+
+            blackKeys.push(<Key
+                key={i}
+                color={"black"}
+                note={note}
+                invisible={isInvisibleKey}
+                highlighted={shouldBeHighlighted}
+            />);
+
+            if (!isInvisibleKey)
+                ++blackKeyNoteCounter;
         }
     }
 
-    if (scaleNotes[0].includes("#"))
+
+    if (SCALES[scale][0].includes("#"))
     {
-        findHighlightedBlackKeys();
-        findHighlightedWhiteKeys();
+        doBlackKeys();
+        doWhiteKeys();
     }
     else
     {
-        findHighlightedWhiteKeys();
-        findHighlightedBlackKeys();
+        doWhiteKeys();
+        doBlackKeys();
     }
 
-    const whiteKeys = [];
-    for (let i = 0; i < NUM_WHITE_KEYS; ++i)
-    {
-        const note = WHITE_KEY_NOTES[i % WHITE_KEY_NOTES.length];
-
-        // if (!foundFirstNote && scaleNotes[0] === note)
-        //     foundFirstNote = true;
-        //
-        // const shouldHighlight = scale && foundFirstNote && scaleNotes.includes(note) && !usedScaleNotes.includes(note);
-        // if (shouldHighlight)
-        //     usedScaleNotes.push(note);
-
-        whiteKeys.push(<Key
-            key={i}
-            color={"white"}
-            note={note}
-            highlighted={highlightedWhiteKeyIndexes.includes(i)}
-        />);
-    }
-
-    const blackKeys = [];
-    let blackKeyNoteCounter = 0;
-    for (let i = 0; i < NUM_WHITE_KEYS; ++i)
-    {
-        const isInvisibleKey = INVISIBLE_BLACK_KEY_INDEXES.includes(i);
-        const note = isInvisibleKey ? null : BLACK_KEY_NOTES[blackKeyNoteCounter % BLACK_KEY_NOTES.length]
-
-        // if (!foundFirstNote && scaleNotes[0] === note)
-        //     foundFirstNote = true;
-        //
-        // const shouldHighlight = scale && foundFirstNote && scaleNotes.includes(note) && !usedScaleNotes.includes(note);
-        // if (shouldHighlight)
-        //     usedScaleNotes.push(note);
-
-        blackKeys.push(<Key
-            key={i}
-            color={"black"}
-            note={note}
-            invisible={isInvisibleKey}
-            highlighted={highlightedBlackKeyIndexes.includes(i)}
-            // highlighted={scale && !isInvisibleKey ? SCALES[scale].includes(note) : false}
-        />);
-
-        if (!isInvisibleKey)
-            ++blackKeyNoteCounter;
-    }
 
     return (
         <div className={"piano"}>
