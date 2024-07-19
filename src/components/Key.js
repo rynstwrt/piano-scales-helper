@@ -8,8 +8,10 @@ export default function Key({ color, invisible })
         keyClasses.push("invisible");
 
     return (
-        <div className={keyClasses.join(" ")}>
+        <div className={"key-container"}>
+            <div className={keyClasses.join(" ")}>
 
+            </div>
         </div>
     );
 }
