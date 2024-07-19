@@ -21,11 +21,11 @@ export default function Piano()
 
     return (
         <div className={"piano"}>
-            <div className={"piano-section"} id={"white-keys"}>
+            <div className={"piano-layer"} id={"white-keys"}>
                 { whiteKeys }
             </div>
-            <div className={"piano-section"} id={"black-keys"}>
-                {/*{ blackKeys }*/}
+            <div className={"piano-layer"} id={"black-keys"}>
+                { blackKeys }
             </div>
         </div>
     );

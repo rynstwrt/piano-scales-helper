@@ -1,49 +1,59 @@
 @import "partials/constants";
 
 
-.key-container
+.piano-key
 {
-    min-width: $white-key-width;
-    //display: flex;
-    //justify-content: center;
+    width: $white-key-width;
+    height: 100%;
 
-    &:not(&:first-of-type) > .white-key
+    &:not(&:first-of-type).white-key
     {
         border-left: 1px solid black;
     }
 
-    &:not(&:last-of-type) > .white-key
+    &:not(&:last-of-type).white-key
     {
         border-right: 1px solid black;
     }
-}
 
-
-.piano-key
-{
-    //width: 100%;
-    //height: 100%;
-}
-
-
-.white-key
-{
-    background-color: white;
-    //min-width: $white-key-width;
-    //min-width: 100%;
-    height: $white-key-height;
-}
-
-
-.black-key
-{
-    background-color: black;
-    width: 70%;
-    margin: 0 auto;
-    height: $black-key-height;
-
-    &.invisible
+    &.white-key
     {
-        visibility: hidden;
+        .key-content
+        {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+
+            &:not(&:first-of-type) > .white-key
+            {
+                border-left: 1px solid black;
+            }
+
+            &:not(&:last-of-type) > .white-key
+            {
+                border-right: 1px solid black;
+            }
+        }
+    }
+
+    &.black-key
+    {
+        &.invisible
+        {
+            visibility: hidden;
+        }
+
+        .key-content
+        {
+            width: $black-key-width;
+            height: $black-key-height;
+            background-color: black;
+            margin: 0 auto;
+        }
+    }
+
+    .key-content
+    {
+
     }
 }

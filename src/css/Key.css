@@ -1,26 +1,32 @@
-.key-container {
-  min-width: 35px;
+.piano-key {
+  width: 35px;
+  height: 100%;
 }
-.key-container:not(.key-container:first-of-type) > .white-key {
+.piano-key:not(.piano-key:first-of-type).white-key {
   border-left: 1px solid black;
 }
-.key-container:not(.key-container:last-of-type) > .white-key {
+.piano-key:not(.piano-key:last-of-type).white-key {
   border-right: 1px solid black;
 }
-
-.white-key {
+.piano-key.white-key .key-content {
+  width: 100%;
+  height: 100%;
   background-color: white;
-  height: 150px;
 }
-
-.black-key {
-  background-color: black;
-  width: 70%;
-  margin: 0 auto;
-  height: 80px;
+.piano-key.white-key .key-content:not(.piano-key.white-key .key-content:first-of-type) > .white-key {
+  border-left: 1px solid black;
 }
-.black-key.invisible {
+.piano-key.white-key .key-content:not(.piano-key.white-key .key-content:last-of-type) > .white-key {
+  border-right: 1px solid black;
+}
+.piano-key.black-key.invisible {
   visibility: hidden;
+}
+.piano-key.black-key .key-content {
+  width: 25px;
+  height: 80px;
+  background-color: black;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=Key.css.map */
