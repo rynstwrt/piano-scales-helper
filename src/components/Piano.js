@@ -12,7 +12,7 @@ const BLACK_KEY_NOTES = ["F#", "G#", "A#", "C#", "D#"];
 
 export default function Piano()
 {
-    const [scale, setScale] = useState("A#");
+    const [scale, setScale] = useState("B");
 
 
     // function changeScale(newScale)

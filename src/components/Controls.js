@@ -3,69 +3,50 @@ import "../css/Controls.css";
 
 export default function Controls()
 {
-    function selectSharpFlatKey(event)
+    function onMinorButtonClick(event)
     {
         const button = event.target;
+        if (button.classList.contains("selected"))
+        {
+            button.classList.remove("selected");
+        }
+        else
+        {
+            button.classList.add("selected");
+        }
 
-        const currentlySelectedButton = button.parentElement.querySelector("button.selected");
-        if (currentlySelectedButton)
-            currentlySelectedButton.classList.remove("selected")
-
-        button.classList.add("selected");
     }
-
 
     return (
         <div id={"controls"}>
             <div className={"control-row"}>
-                <label>Key:</label>
-                <select id={"key-select"}>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                    <option>D</option>
-                    <option>E</option>
-                    <option>F</option>
-                    <option>G</option>
-                </select>
-                <div id={"sharp-flat-buttons"}>
-                    <button id={"sharp"} className={"key-control-button"} onClick={selectSharpFlatKey}>#</button>
-                    <button id={"flat"} className={"key-control-button"} onClick={selectSharpFlatKey}>b</button>
+                <div className={"control-row-left-section"}>
+                    <label>Key:</label>
+                    <select id={"note-select"}>
+                        <option value={"A"}>A</option>
+                        <option value={"B"}>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                    </select>
+                    <select id={"accidental-select"}>
+                        <option>♮</option>
+                        <option>#</option>
+                        <option>b</option>
+                    </select>
+                    <button className={"action-button"} id={"minor-button"} onClick={onMinorButtonClick}>Minor</button>
                 </div>
-                <button id={"minor"} className={"key-control-button"}>Minor</button>
             </div>
-            {/*<div className={"control-row"}>*/}
-            {/*    <label>Key:</label>*/}
-            {/*    <select id={"key-select"}>*/}
-            {/*        <option>A</option>*/}
-            {/*        <option>B</option>*/}
-            {/*        <option>C</option>*/}
-            {/*        <option>D</option>*/}
-            {/*        <option>E</option>*/}
-            {/*        <option>F</option>*/}
-            {/*        <option>G</option>*/}
-            {/*    </select>*/}
-            {/*    <div id={"sharp-flat-buttons"}>*/}
-            {/*        <button id={"sharp"} className={"sharp-flat-button"}>#</button>*/}
-            {/*        <button id={"flat"} className={"sharp-flat-button"}>b</button>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*<div className={"control-row"}>*/}
-            {/*    <label>Key:</label>*/}
-            {/*    <select id={"key-select"}>*/}
-            {/*        <option>A</option>*/}
-            {/*        <option>B</option>*/}
-            {/*        <option>C</option>*/}
-            {/*        <option>D</option>*/}
-            {/*        <option>E</option>*/}
-            {/*        <option>F</option>*/}
-            {/*        <option>G</option>*/}
-            {/*    </select>*/}
-            {/*    <div id={"sharp-flat-buttons"}>*/}
-            {/*        <button id={"sharp"} className={"sharp-flat-button"}>#</button>*/}
-            {/*        <button id={"flat"} className={"sharp-flat-button"}>b</button>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+
+            <div className={"control-row"}>
+                <div className={"control-row-left-section"}>
+                    <label>Audio:</label>
+                    <input id={"volume-range"} type={"range"} min={0} max={100} value={50} />
+                </div>
+                <button className={"action-button"} id={"play-button"}>Play</button>
+            </div>
         </div>
     );
 }

@@ -1,6 +1,5 @@
 import '../css/App.css';
 import Piano from "./Piano";
-import {useState} from "react";
 import Controls from "./Controls";
 
 

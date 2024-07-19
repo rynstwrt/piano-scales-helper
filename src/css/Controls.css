@@ -1,14 +1,35 @@
+select {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+button {
+  font-family: inherit;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
 #controls {
   background-color: #3b3b3b;
   margin-top: 40px;
   padding: 10px;
   border-radius: 5px;
+  width: 100%;
 }
 #controls .control-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   font-family: "Josefin Sans", sans-serif;
   padding: 7px;
+}
+#controls .control-row .control-row-left-section {
+  display: flex;
+  align-items: center;
 }
 #controls .control-row label {
   color: white;
@@ -17,36 +38,26 @@
   font-weight: 400;
   letter-spacing: 1px;
 }
-#controls .control-row #key-select {
-  font-family: inherit;
+#controls .control-row #note-select {
   width: 150px;
-  padding: 3px 5px;
-  border-radius: 5px;
 }
-#controls .control-row #sharp-flat-buttons {
-  margin-left: 7px;
-  display: flex;
-  align-items: center;
+#controls .control-row #accidental-select {
+  width: 45px;
 }
-#controls .control-row .key-control-button {
-  font-family: inherit;
-  min-width: 20px;
-  height: 20px;
-  margin: 0 3px;
+#controls .control-row .action-button {
+  padding: 0 5px;
+  font-weight: 500;
   background-color: white;
-  border-radius: 5px;
-  cursor: pointer;
   position: relative;
   overflow: hidden;
-  padding: 4px;
   z-index: 0;
   box-sizing: content-box;
   transition: background-color 0.15s ease-in-out;
 }
-#controls .control-row .key-control-button.selected {
+#controls .control-row .action-button.selected {
   background-color: #00e0b7;
 }
-#controls .control-row .key-control-button:before {
+#controls .control-row .action-button:before {
   content: "";
   position: absolute;
   top: 0;
@@ -58,11 +69,28 @@
   opacity: 0;
   transition: opacity 0.15s ease-in-out;
 }
-#controls .control-row .key-control-button:hover:before {
+#controls .control-row .action-button:hover:before {
   opacity: 0.17;
 }
-#controls .control-row button#minor {
+#controls .control-row select {
+  margin-right: 10px;
+}
+#controls .control-row select, #controls .control-row .action-button {
+  height: 25px;
+}
+#controls .control-row .action-button {
+  margin-left: 50px;
+  font-weight: 500;
+  background-color: transparent;
   width: 100px;
+  height: 30px;
+  border: 1px solid #00e0b7;
+  color: #00e0b7;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+#controls .control-row .action-button:hover {
+  background-color: #00e0b7;
+  color: #3b3b3b;
 }
 
 /*# sourceMappingURL=Controls.css.map */
