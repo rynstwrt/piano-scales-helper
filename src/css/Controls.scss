@@ -112,17 +112,29 @@ button
 #audio-control-row
 {
     display: flex;
+    //justify-content: space-between;
 
-    #volume-range
+    .control-row-left-section
     {
         width: 100%;
+
+        #volume-range
+        {
+            width: 100%;
+            //min-width: 100%;
+        }
+
+        output
+        {
+            color: $accent-color;
+            font-weight: 400;
+            margin-left: 5px;
+            min-width: 30px;
+        }
     }
 
-    output
+    #play-button
     {
-        color: $accent-color;
-        font-weight: 400;
-        margin-left: 5px;
-        min-width: 30px;
+        margin-left: 25px;
     }
 }

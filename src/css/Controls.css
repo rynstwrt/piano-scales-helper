@@ -76,14 +76,20 @@ button {
 #audio-control-row {
   display: flex;
 }
-#audio-control-row #volume-range {
+#audio-control-row .control-row-left-section {
   width: 100%;
 }
-#audio-control-row output {
+#audio-control-row .control-row-left-section #volume-range {
+  width: 100%;
+}
+#audio-control-row .control-row-left-section output {
   color: #00e0b7;
   font-weight: 400;
   margin-left: 5px;
   min-width: 30px;
+}
+#audio-control-row #play-button {
+  margin-left: 25px;
 }
 
 /*# sourceMappingURL=Controls.css.map */
