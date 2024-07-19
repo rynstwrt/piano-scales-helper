@@ -11,16 +11,22 @@ const BLACK_KEY_NOTES = ["F#", "G#", "A#", "C#", "D#"];
 
 export default function Piano({ scale })
 {
+    const scaleNotes = [...SCALES[scale]];
+
     const whiteKeys = [];
     for (let i = 0; i < NUM_WHITE_KEYS; ++i)
     {
         const note = WHITE_KEY_NOTES[i % WHITE_KEY_NOTES.length];
 
+        const shouldHighlight = scale && scaleNotes[0] === note;
+        if (shouldHighlight)
+            scaleNotes.shift();
+
         whiteKeys.push(<Key
             key={i}
             color={"white"}
             note={note}
-            highlighted={scale ? SCALES[scale].includes(note) : false}
+            highlighted={shouldHighlight}
         />);
     }
 
@@ -31,12 +37,17 @@ export default function Piano({ scale })
         const isInvisibleKey = INVISIBLE_BLACK_KEY_INDEXES.includes(i);
         const note = isInvisibleKey ? null : BLACK_KEY_NOTES[blackKeyNoteCounter % BLACK_KEY_NOTES.length]
 
+        const shouldHighlight = scale && !isInvisibleKey && scaleNotes[0] === note;
+        if (shouldHighlight)
+            scaleNotes.shift();
+
         blackKeys.push(<Key
             key={i}
             color={"black"}
             note={note}
             invisible={isInvisibleKey}
-            highlighted={scale && !isInvisibleKey ? SCALES[scale].includes(note) : false}
+            highlighted={shouldHighlight}
+            // highlighted={scale && !isInvisibleKey ? SCALES[scale].includes(note) : false}
         />);
 
         if (!isInvisibleKey)
