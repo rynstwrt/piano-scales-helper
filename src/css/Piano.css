@@ -1,8 +1,5 @@
 .piano {
   position: relative;
-  border: 1px solid red;
-  width: 500px;
-  height: 200px;
 }
 .piano .piano-section {
   position: absolute;
@@ -19,7 +16,10 @@
   justify-content: center;
 }
 .piano .piano-section#black-keys .key-container:first-of-type {
-  border: 1px solid orange;
+  min-width: 17.5px;
+}
+.piano .piano-section#black-keys .key-container {
+  border: 1px solid cyan;
 }
 
 /*# sourceMappingURL=Piano.css.map */

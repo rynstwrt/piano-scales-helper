@@ -1,12 +1,14 @@
+@import "partials/constants";
+
+
 .piano
 {
     position: relative;
     //display: flex;
     //justify-content: center;
     //align-items: center;
-    border: 1px solid red;
-    width: 500px;
-    height: 200px;
+    //width: 500px;
+    //height: 200px;
 
     .piano-section
     {
@@ -33,13 +35,13 @@
 
             .key-container:first-of-type
             {
-                border: 1px solid orange;
-                //flex: 0.5;
+                //border: 1px solid orange;
+                min-width: $white-key-width / 2;
             }
 
             .key-container
             {
-                //border: 1px solid cyan;
+                border: 1px solid cyan;
             }
         }
     }

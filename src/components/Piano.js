@@ -13,7 +13,7 @@ export default function Piano()
         whiteKeys.push(<Key key={i} color={"white"} />);
 
     const blackKeys = [];
-    for (let i = 0; i < NUM_WHITE_KEYS + 2; ++i)
+    for (let i = 0; i < NUM_WHITE_KEYS; ++i)
         if (INVISIBLE_BLACK_KEY_INDEXES.includes(i))
             blackKeys.push(<Key key={i} color={"black"} invisible={true} />);
         else
@@ -25,7 +25,7 @@ export default function Piano()
                 { whiteKeys }
             </div>
             <div className={"piano-section"} id={"black-keys"}>
-                { blackKeys }
+                {/*{ blackKeys }*/}
             </div>
         </div>
     );

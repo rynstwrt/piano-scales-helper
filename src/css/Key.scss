@@ -1,19 +1,11 @@
-$white-key-width: 35px;
-$white-key-height: 150px;
-
-$black-key-width: 25px;
-$black-key-height: 80px;
+@import "partials/constants";
 
 
 .key-container
 {
-    width: 100%;
-    height: 100%;
-    flex: 1;
-    //border: 1px solid red;
-    //background-color: red;
-    display: flex;
-    justify-content: center;
+    min-width: $white-key-width;
+    //display: flex;
+    //justify-content: center;
 
     &:not(&:first-of-type) > .white-key
     {
@@ -38,7 +30,7 @@ $black-key-height: 80px;
 {
     background-color: white;
     //min-width: $white-key-width;
-    width: 100%;
+    //min-width: 100%;
     height: $white-key-height;
 }
 
@@ -46,12 +38,9 @@ $black-key-height: 80px;
 .black-key
 {
     background-color: black;
-    //min-width: $black-key-width;
-    width: $black-key-width;
-    //width: 100%;
+    width: 70%;
+    margin: 0 auto;
     height: $black-key-height;
-    //flex: 1;
-    //margin: 1px;
 
     &.invisible
     {
