@@ -5,6 +5,6 @@ import Piano from "./Piano";
 export default function App()
 {
     return (
-        <Piano />
+        <Piano scale={"A"} />
     );
 }
