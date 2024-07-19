@@ -1,7 +1,7 @@
 import "../css/Key.css";
 
 
-export default function Key({ color, invisible })
+export default function Key({ color, note, highlighted, invisible })
 {
     const keyClasses = ["piano-key", `${color}-key`];
     if (invisible)
@@ -10,7 +10,7 @@ export default function Key({ color, invisible })
     return (
         <div className={keyClasses.join(" ")}>
             <div className={"key-content"}>
-                {/*<p>A</p>*/}
+                <p>{ note }</p>
             </div>
         </div>
     );

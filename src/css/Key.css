@@ -27,6 +27,21 @@
   height: 80px;
   background-color: black;
   margin: 0 auto;
+  color: white;
+}
+.piano-key .key-content {
+  position: relative;
+}
+.piano-key .key-content p {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  margin-bottom: 5px;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=Key.css.map */
