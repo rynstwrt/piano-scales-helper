@@ -12,6 +12,8 @@
   width: 100%;
   height: 100%;
   background-color: white;
+  font-weight: 600;
+  font-size: 17px;
 }
 .piano-key.white-key .key-content:not(.piano-key.white-key .key-content:first-of-type) > .white-key {
   border-left: 1px solid black;
@@ -23,11 +25,15 @@
   visibility: hidden;
 }
 .piano-key.black-key .key-content {
-  width: 25px;
-  height: 80px;
+  width: 27px;
+  height: 95px;
   background-color: black;
   margin: 0 auto;
   color: white;
+}
+.piano-key.black-key .key-content p {
+  font-weight: 400;
+  font-size: 14px;
 }
 .piano-key .key-content {
   position: relative;
@@ -35,13 +41,10 @@
 .piano-key .key-content p {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 7px;
   left: 0;
   text-align: center;
-  margin-bottom: 5px;
   font-family: "Josefin Sans", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
 }
 
 /*# sourceMappingURL=Key.css.map */
