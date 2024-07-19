@@ -1,8 +1,12 @@
 import "../css/Controls.css";
+import {useState} from "react";
 
 
-export default function Controls()
+export default function Controls({ setScale })
 {
+    const [volume, setVolume] = useState(50);
+
+
     function onMinorButtonClick(event)
     {
         const button = event.target;
@@ -14,12 +18,19 @@ export default function Controls()
         {
             button.classList.add("selected");
         }
-
     }
+
+
+    function onVolumeSliderChange(event)
+    {
+        setScale("A#")
+        setVolume(event.target.value);
+    }
+
 
     return (
         <div id={"controls"}>
-            <div className={"control-row"}>
+            <div id={"scale-control-row"} className={"control-row"}>
                 <div className={"control-row-left-section"}>
                     <label>Key:</label>
                     <select id={"note-select"}>
@@ -36,15 +47,20 @@ export default function Controls()
                         <option>#</option>
                         <option>b</option>
                     </select>
-                    <button className={"action-button"} id={"minor-button"} onClick={onMinorButtonClick}>Minor</button>
+                    <button id={"minor-button"} onClick={onMinorButtonClick}>Minor</button>
                 </div>
+
+                <button className={"action-button"} id={"submit-button"}>Submit</button>
             </div>
 
-            <div className={"control-row"}>
+
+            <div id={"audio-control-row"} className={"control-row"}>
                 <div className={"control-row-left-section"}>
                     <label>Audio:</label>
-                    <input id={"volume-range"} type={"range"} min={0} max={100} value={50} />
+                    <input id={"volume-range"} type={"range"} min={0} max={100} defaultValue={50} step={1} onChange={onVolumeSliderChange} />
+                    <output id={"volume-range-output"}>{volume}</output>
                 </div>
+
                 <button className={"action-button"} id={"play-button"}>Play</button>
             </div>
         </div>

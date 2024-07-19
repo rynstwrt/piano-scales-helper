@@ -30,6 +30,7 @@ button {
 #controls .control-row .control-row-left-section {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 #controls .control-row label {
   color: white;
@@ -37,46 +38,6 @@ button {
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 1px;
-}
-#controls .control-row #note-select {
-  width: 150px;
-}
-#controls .control-row #accidental-select {
-  width: 45px;
-}
-#controls .control-row .action-button {
-  padding: 0 5px;
-  font-weight: 500;
-  background-color: white;
-  position: relative;
-  overflow: hidden;
-  z-index: 0;
-  box-sizing: content-box;
-  transition: background-color 0.15s ease-in-out;
-}
-#controls .control-row .action-button.selected {
-  background-color: #00e0b7;
-}
-#controls .control-row .action-button:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: black;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.15s ease-in-out;
-}
-#controls .control-row .action-button:hover:before {
-  opacity: 0.17;
-}
-#controls .control-row select {
-  margin-right: 10px;
-}
-#controls .control-row select, #controls .control-row .action-button {
-  height: 25px;
 }
 #controls .control-row .action-button {
   margin-left: 50px;
@@ -91,6 +52,60 @@ button {
 #controls .control-row .action-button:hover {
   background-color: #00e0b7;
   color: #3b3b3b;
+}
+
+#scale-control-row #note-select {
+  width: 150px;
+}
+#scale-control-row #accidental-select {
+  width: 45px;
+}
+#scale-control-row #minor-button {
+  padding: 0 5px;
+  font-weight: 500;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  box-sizing: content-box;
+  transition: background-color 0.15s ease-in-out;
+}
+#scale-control-row #minor-button.selected {
+  background-color: #00e0b7;
+}
+#scale-control-row #minor-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+#scale-control-row #minor-button:hover:before {
+  opacity: 0.17;
+}
+#scale-control-row select {
+  margin-right: 10px;
+}
+#scale-control-row select, #scale-control-row #minor-button {
+  height: 25px;
+}
+
+#audio-control-row {
+  display: flex;
+}
+#audio-control-row #volume-range {
+  width: 100%;
+}
+#audio-control-row output {
+  color: #00e0b7;
+  font-weight: 400;
+  margin-left: 5px;
+  min-width: 30px;
 }
 
 /*# sourceMappingURL=Controls.css.map */

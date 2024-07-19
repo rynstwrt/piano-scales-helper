@@ -10,37 +10,32 @@ const WHITE_KEY_NOTES = ["F", "G", "A", "B", "C", "D", "E"];
 const BLACK_KEY_NOTES = ["F#", "G#", "A#", "C#", "D#"];
 
 
-export default function Piano()
+export default function Piano({ scale })
 {
-    const [scale, setScale] = useState("B");
-
-
-    // function changeScale(newScale)
-    // {
-    //     setScale(newScale);
-    // }
-
-
     let firstScaleNoteLocation = null;
     
     
     const whiteKeys = [];
     function doWhiteKeys()
     {
-        const whiteKeyNotesInScale = SCALES[scale].filter(note => !note.includes("#"));
+        let whiteKeyNotesInScale = [];
+        if (scale)
+            whiteKeyNotesInScale = SCALES[scale].filter(note => !note.includes("#"));
+
         const highlightedWhiteKeys = [];
         let firstWhiteKeyFound = false;
         for (let i = 0; i < NUM_WHITE_KEYS; ++i)
         {
             const note = WHITE_KEY_NOTES[i % WHITE_KEY_NOTES.length];
 
-            if (!firstScaleNoteLocation && SCALES[scale][0] === note)
+            if (scale && !firstScaleNoteLocation && SCALES[scale][0] === note)
                 firstScaleNoteLocation = i;
 
-            if (whiteKeyNotesInScale[0] === note)
+            if (scale && whiteKeyNotesInScale[0] === note)
                 firstWhiteKeyFound = true;
 
-            const shouldBeHighlighted = SCALES[scale].includes(note)
+            const shouldBeHighlighted = scale
+                && SCALES[scale].includes(note)
                 && (!firstScaleNoteLocation || i >= firstScaleNoteLocation)
                 && !highlightedWhiteKeys.includes(note)
                 && firstWhiteKeyFound
@@ -62,7 +57,10 @@ export default function Piano()
     const blackKeys = [];
     function doBlackKeys()
     {
-        const blackKeyNotesInScale = SCALES[scale].filter(note => note.includes("#"));
+        let blackKeyNotesInScale = [];
+        if (scale)
+            blackKeyNotesInScale = SCALES[scale].filter(note => note.includes("#"));
+
         const highlightedBlackKeys = [];
         let firstBlackKeyFound = false;
         let blackKeyNoteCounter = 0;
@@ -71,16 +69,14 @@ export default function Piano()
             const isInvisibleKey = INVISIBLE_BLACK_KEY_INDEXES.includes(i);
             const note = isInvisibleKey ? null : BLACK_KEY_NOTES[blackKeyNoteCounter % BLACK_KEY_NOTES.length]
 
-            if (!firstScaleNoteLocation && SCALES[scale][0] === note)
+            if (scale && !firstScaleNoteLocation && SCALES[scale][0] === note)
                 firstScaleNoteLocation = blackKeyNoteCounter;
 
-            if (blackKeyNotesInScale[0] === note)
+            if (scale && blackKeyNotesInScale[0] === note)
                 firstBlackKeyFound = true;
 
-            // const is
-
-
-            const shouldBeHighlighted = !isInvisibleKey
+            const shouldBeHighlighted = scale
+                && !isInvisibleKey
                 && (!firstScaleNoteLocation || blackKeyNoteCounter >= firstScaleNoteLocation)
                 && !highlightedBlackKeys.includes(note)
                 && firstBlackKeyFound
@@ -103,7 +99,7 @@ export default function Piano()
     }
 
 
-    if (SCALES[scale][0].includes("#"))
+    if (scale && SCALES[scale][0].includes("#"))
     {
         doBlackKeys();
         doWhiteKeys();
