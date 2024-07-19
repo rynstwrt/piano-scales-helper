@@ -29,9 +29,10 @@ export default function Controls()
                     <option>G</option>
                 </select>
                 <div id={"sharp-flat-buttons"}>
-                    <button id={"sharp"} className={"sharp-flat-button"} onClick={selectSharpFlatKey}>#</button>
-                    <button id={"flat"} className={"sharp-flat-button"} onClick={selectSharpFlatKey}>b</button>
+                    <button id={"sharp"} className={"key-control-button"} onClick={selectSharpFlatKey}>#</button>
+                    <button id={"flat"} className={"key-control-button"} onClick={selectSharpFlatKey}>b</button>
                 </div>
+                <button id={"minor"} className={"key-control-button"}>Minor</button>
             </div>
             {/*<div className={"control-row"}>*/}
             {/*    <label>Key:</label>*/}

@@ -20,7 +20,7 @@
         label
         {
             color: white;
-            margin-right: 5px;
+            margin-right: 15px;
             text-transform: uppercase;
             font-weight: 400;
             letter-spacing: 1px;
@@ -36,53 +36,59 @@
 
         #sharp-flat-buttons
         {
-            margin-left: 15px;
+            margin-left: 7px;
             display: flex;
             align-items: center;
+        }
 
-            .sharp-flat-button
+        .key-control-button
+        {
+            font-family: inherit;
+            $size: 20px;
+            min-width: $size;
+            height: $size;
+            margin: 0 3px;
+            background-color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            padding: 4px;
+            z-index: 0;
+            box-sizing: content-box;
+            transition: background-color .15s ease-in-out;
+
+            &.selected
             {
-                font-family: inherit;
-                $size: 25px;
-                width: $size;
-                height: $size;
-                margin: 0 3px;
-                background-color: white;
-                border-radius: 5px;
-                cursor: pointer;
-                position: relative;
-                overflow: hidden;
-                //color: red;
-                z-index: 0;
-                transition: background-color .15s ease-in-out;
+                background-color: $highlight-color;
+            }
 
-                &.selected
-                {
-                    background-color: $highlight-color;
-                }
+            &:before
+            {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: black;
+                z-index: -1;
+                opacity: 0;
+                transition: opacity .15s ease-in-out;
+            }
 
+            &:hover
+            {
                 &:before
                 {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-                    background-color: black;
-                    z-index: -1;
-                    opacity: 0;
-                    transition: opacity .15s ease-in-out;
-                }
-
-                &:hover
-                {
-                    &:before
-                    {
-                        opacity: 0.17;
-                    }
+                    opacity: 0.17;
                 }
             }
+        }
+
+        button#minor
+        {
+            width: 100px;
         }
     }
 }
