@@ -1,4 +1,4 @@
-import "../css/Controls.css";
+import "../../css/Controls.css";
 import {useState} from "react";
 
 

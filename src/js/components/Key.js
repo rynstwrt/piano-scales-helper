@@ -1,4 +1,4 @@
-import "../css/Key.css";
+import "../../css/Key.css";
 
 
 export default function Key({ color, note, highlighted, invisible })

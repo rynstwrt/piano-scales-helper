@@ -1,4 +1,4 @@
-import '../css/App.css';
+import '../../css/App.css';
 import Piano from "./Piano";
 import Controls from "./Controls";
 import {useState} from "react";

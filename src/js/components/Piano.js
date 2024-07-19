@@ -1,7 +1,6 @@
-import "../css/Piano.css";
+import "../../css/Piano.css";
 import Key from "./Key";
 import { SCALES } from "../scales";
-import {useState} from "react";
 
 
 const NUM_WHITE_KEYS = 14;
