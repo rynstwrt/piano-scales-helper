@@ -1,8 +1,6 @@
 import "../../css/Controls.css";
 import AudioPlayer from "../AudioPlayer";
-
-
-const NOTES_WITH_NO_SHARPS = ["B", "E"];
+import { NOTES_WITH_NO_SHARPS } from "../constants";
 
 
 export default function Controls({ initialScale, setScale })

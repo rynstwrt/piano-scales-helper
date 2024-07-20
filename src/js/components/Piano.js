@@ -1,12 +1,14 @@
 import "../../css/Piano.css";
 import Key from "./Key";
 import { SCALES } from "../scales";
-
-
-const NUM_WHITE_KEYS = 14;
-const NUM_BLACK_KEYS = 10;
-const START_NOTE_OFFSET = 8;
-const KEY_START_OCTAVE = 3;
+import {
+    PIANO_NOTES,
+    NUM_WHITE_KEYS,
+    NUM_BLACK_KEYS,
+    START_NOTE_OFFSET,
+    KEY_START_OCTAVE,
+    BLACK_NOTES_AFTER_INVISIBLE_KEYS
+} from "../constants";
 
 
 export default function Piano({ scaleName })
@@ -14,7 +16,6 @@ export default function Piano({ scaleName })
     let whiteKeys = [];
     let blackKeys = [];
 
-    const pianoNotes = Object.keys(SCALES).filter(scaleName => !scaleName.endsWith("m"));
     const scaleNotes = SCALES[scaleName];
 
     let foundFirstScaleKey = false;
@@ -24,7 +25,7 @@ export default function Piano({ scaleName })
 
     for (let i = START_NOTE_OFFSET; i < NUM_WHITE_KEYS + NUM_BLACK_KEYS + START_NOTE_OFFSET; ++i)
     {
-        const note = pianoNotes[i % pianoNotes.length];
+        const note = PIANO_NOTES[i % PIANO_NOTES.length];
 
         if (note === "C")
             ++noteOctave;
@@ -53,14 +54,11 @@ export default function Piano({ scaleName })
         }
         else
         {
-            if (["C#", "F#"].includes(note))
+            if (BLACK_NOTES_AFTER_INVISIBLE_KEYS.includes(note))
             {
                 blackKeys.push(<Key
                     key={i}
                     color={"black"}
-                    // note={note + noteOctave}
-                    highlighted={false}
-                    // octave={noteOctave}
                     invisible={true}
                 />);
             }
@@ -71,7 +69,6 @@ export default function Piano({ scaleName })
                 note={note}
                 highlighted={shouldBeHighlighted}
                 octave={noteOctave}
-                invisible={false}
             />);
         }
 
