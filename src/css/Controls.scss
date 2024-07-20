@@ -42,6 +42,7 @@ button
         font-family: $font-1;
         padding: 7px;
         margin: 1px 0;
+        user-select: none;
 
         .control-row-left-section
         {
@@ -50,7 +51,7 @@ button
             //width: 100%;
         }
 
-        label
+        .control-label
         {
             color: white;
             margin-right: 15px;
@@ -124,7 +125,26 @@ button
 }
 
 
-#audio-control-row
+#preview-octave-control-row
+{
+    .preview-octave-radio-button-container
+    {
+        label
+        {
+            color: white;
+            //vertical-align: center;
+            margin-left: 5px;
+        }
+
+        &:not(&:last-of-type)
+        {
+            margin-right: 15px;
+        }
+    }
+}
+
+
+#play-button-control-row
 {
     justify-content: center;
 

@@ -42,7 +42,7 @@ export default class AudioPlayer
     }
 
 
-    static async playScale(scale)
+    static async playScale(scale, startOctave)
     {
         if (!this.#synth)
         {
@@ -56,7 +56,7 @@ export default class AudioPlayer
         }
 
         const scaleNotes = SCALES[scale];
-        let octave = 3;
+        let octave = startOctave;
         const scaleNotesWithOctave = SCALES[scale].map((note, i) =>
         {
             const n = note + octave;

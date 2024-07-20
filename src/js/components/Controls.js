@@ -66,7 +66,8 @@ export default function Controls({ initialScale, setScale })
 
     function onPlayButtonClick()
     {
-        AudioPlayer.playScale(getScaleFromElements());
+        const octave = document.querySelector("#preview-octave-control-row input[type='radio']:checked").value;
+        AudioPlayer.playScale(getScaleFromElements(), octave);
     }
 
 
@@ -78,7 +79,7 @@ export default function Controls({ initialScale, setScale })
     return (
         <div id={"controls"}>
             <div id={"scale-control-row"} className={"control-row"}>
-                <label>Scale:</label>
+                <label className={"control-label"}>Scale:</label>
                 <select id={"note-select"} onChange={onKeyOptionChanged} value={initialNote}>
                     <option>A</option>
                     <option>B</option>
@@ -103,13 +104,34 @@ export default function Controls({ initialScale, setScale })
 
 
             <div id={"volume-control-row"} className={"control-row"}>
-                <label>Volume:</label>
+                <label className={"control-label"}>Volume:</label>
                 <output id={"volume-range-output"}>50%</output>
                 <input id={"volume-range"} type={"range"} min={0} max={100} defaultValue={50} step={1} onChange={onVolumeSliderChange} />
             </div>
 
 
-            <div id={"audio-control-row"} className={"control-row"}>
+            <div id={"preview-octave-control-row"} className={"control-row"}>
+                <label className={"control-label"}>Preview Octave:</label>
+                <div className={"preview-octave-radio-button-container"}>
+                    <input id={"preview-octave-radio-button-2"} type={"radio"} name={"octave"} value={2} />
+                    <label htmlFor={"preview-octave-radio-button-2"}>2</label>
+                </div>
+                <div className={"preview-octave-radio-button-container"}>
+                    <input id={"preview-octave-radio-button-3"} type={"radio"} name={"octave"} value={3} checked={true} />
+                    <label htmlFor={"preview-octave-radio-button-3"}>3</label>
+                </div>
+                <div className={"preview-octave-radio-button-container"}>
+                    <input id={"preview-octave-radio-button-4"} type={"radio"} name={"octave"} value={4} />
+                    <label htmlFor={"preview-octave-radio-button-4"}>4</label>
+                </div>
+                <div className={"preview-octave-radio-button-container"}>
+                    <input id={"preview-octave-radio-button-5"} type={"radio"} name={"octave"} value={5} />
+                    <label htmlFor={"preview-octave-radio-button-5"}>5</label>
+                </div>
+            </div>
+
+
+            <div id={"play-button-control-row"} className={"control-row"}>
                 <button className={"action-button"} id={"play-button"} onClick={onPlayButtonClick}>Play Scale</button>
             </div>
         </div>

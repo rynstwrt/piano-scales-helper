@@ -31,12 +31,13 @@ button {
   font-family: "Josefin Sans", sans-serif;
   padding: 7px;
   margin: 1px 0;
+  user-select: none;
 }
 #controls .control-row .control-row-left-section {
   display: flex;
   align-items: center;
 }
-#controls .control-row label {
+#controls .control-row .control-label {
   color: white;
   margin-right: 15px;
   text-transform: uppercase;
@@ -85,10 +86,18 @@ button {
   text-align: right;
 }
 
-#audio-control-row {
+#preview-octave-control-row .preview-octave-radio-button-container label {
+  color: white;
+  margin-left: 5px;
+}
+#preview-octave-control-row .preview-octave-radio-button-container:not(#preview-octave-control-row .preview-octave-radio-button-container:last-of-type) {
+  margin-right: 15px;
+}
+
+#play-button-control-row {
   justify-content: center;
 }
-#audio-control-row #play-button {
+#play-button-control-row #play-button {
   width: 150px;
   height: 35px;
   margin-top: 5px;
