@@ -66,7 +66,7 @@ export default function Controls({ initialScale, setScale })
 
     function onPlayButtonClick()
     {
-        const octave = document.querySelector("#preview-octave-control-row input[type='radio']:checked").value;
+        const octave = document.querySelector("#preview-octave-select").value;
         AudioPlayer.playScale(getScaleFromElements(), octave);
     }
 
@@ -112,22 +112,12 @@ export default function Controls({ initialScale, setScale })
 
             <div id={"preview-octave-control-row"} className={"control-row"}>
                 <label className={"control-label"}>Preview Octave:</label>
-                <div className={"preview-octave-radio-button-container"}>
-                    <input id={"preview-octave-radio-button-2"} type={"radio"} name={"octave"} value={2} />
-                    <label htmlFor={"preview-octave-radio-button-2"}>2</label>
-                </div>
-                <div className={"preview-octave-radio-button-container"}>
-                    <input id={"preview-octave-radio-button-3"} type={"radio"} name={"octave"} value={3} checked={true} />
-                    <label htmlFor={"preview-octave-radio-button-3"}>3</label>
-                </div>
-                <div className={"preview-octave-radio-button-container"}>
-                    <input id={"preview-octave-radio-button-4"} type={"radio"} name={"octave"} value={4} />
-                    <label htmlFor={"preview-octave-radio-button-4"}>4</label>
-                </div>
-                <div className={"preview-octave-radio-button-container"}>
-                    <input id={"preview-octave-radio-button-5"} type={"radio"} name={"octave"} value={5} />
-                    <label htmlFor={"preview-octave-radio-button-5"}>5</label>
-                </div>
+                <select id={"preview-octave-select"}>
+                    <option>2</option>
+                    <option selected={true}>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
             </div>
 
 

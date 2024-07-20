@@ -4,20 +4,16 @@
 #controls
 {
     background-color: $lighter-background;
-    //background-color: rgba(black, 0.25);
     margin-top: 40px;
     padding: 20px 15px;
     width: 100%;
-    //box-sizing: content-box;
     border-radius: 10px;
-    //border: 1px solid rgba($accent-transparent, 0.25);
 
     .control-row
     {
         display: flex;
         align-items: center;
         font-family: $font-1;
-        //padding: 7px;
         min-height: 37px;
         margin: 1px 0;
         user-select: none;
@@ -31,11 +27,27 @@
             letter-spacing: 0.5px;
         }
 
+        select
+        {
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 5px 5px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            height: 24px;
+            min-width: 60px;
+
+            &, option
+            {
+                text-align: center;
+            }
+        }
+
         .action-button
         {
             font-weight: 500;
             background-color: transparent;
-            //height: 28px;
             border: 1px solid $accent-color;
             color: $accent-color;
             transition: background-color .2s ease-in-out, color .2s ease-in-out;
@@ -58,26 +70,9 @@
 
 #scale-control-row
 {
-    #note-select, #accidental-select
-    {
-        width: 50px;
-    }
-
     select
     {
-        font-family: inherit;
-        font-weight: 500;
-        font-size: 14px;
-        padding: 5px 5px;
-        border-radius: 5px;
-        text-transform: uppercase;
         margin-right: 10px;
-        height: 25px;
-
-        &, option
-        {
-            text-align: center;
-        }
     }
 
     #major-minor-select
@@ -87,8 +82,8 @@
 
     #random-button
     {
-        height: 30px;
-        line-height: 1.4em;
+        height: 29px;
+        line-height: 1.3em;
     }
 }
 
@@ -121,7 +116,6 @@
         label
         {
             color: white;
-            //vertical-align: center;
             margin-left: 5px;
         }
 

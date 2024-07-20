@@ -1,12 +1,6 @@
 import * as Tone from "tone";
 import {SCALES} from "./scales";
-
-
-const MAX_VOLUME_DB = 7;
-const MIN_VOLUME_DB = -20;
-const VOLUME_SLIDER_DOWN_THRESHOLD = 2;
-const NOTE_TYPE = "8n";
-
+import { MIN_PREVIEW_VOLUME_DB, MAX_PREVIEW_VOLUME_DB, VOLUME_SLIDER_MUTE_THRESHOLD, PREVIEW_NOTE_TYPE } from "./constants";
 
 
 function mapRange(number, inMin, inMax, outMin, outMax)
@@ -37,8 +31,8 @@ export default class AudioPlayer
         if (!this.#synth)
             return;
 
-        const dbVolume = mapRange(volume, 0, 100, MIN_VOLUME_DB, MAX_VOLUME_DB);
-        this.#synth.volume.value = (volume > VOLUME_SLIDER_DOWN_THRESHOLD) ? dbVolume : -999;
+        const dbVolume = mapRange(volume, 0, 100, MIN_PREVIEW_VOLUME_DB, MAX_PREVIEW_VOLUME_DB);
+        this.#synth.volume.value = (volume > VOLUME_SLIDER_MUTE_THRESHOLD) ? dbVolume : -999;
     }
 
 
@@ -77,7 +71,7 @@ export default class AudioPlayer
             {
                 Tone.getTransport().stop();
             }
-        }, scaleNotesWithOctave, NOTE_TYPE);
+        }, scaleNotesWithOctave, PREVIEW_NOTE_TYPE);
 
         this.#sequence.loop = false;
         this.#sequence.start();
@@ -92,6 +86,6 @@ export default class AudioPlayer
             await this.#createSynthIfNotExist();
         }
 
-        this.#synth.triggerAttackRelease(note, NOTE_TYPE);
+        this.#synth.triggerAttackRelease(note, PREVIEW_NOTE_TYPE);
     }
 }

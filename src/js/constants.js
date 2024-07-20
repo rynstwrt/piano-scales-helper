@@ -9,3 +9,8 @@ export const KEY_START_OCTAVE = 3;
 export const PIANO_NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
 export const NOTES_WITH_NO_SHARPS = ["B", "E"];
 export const BLACK_NOTES_AFTER_INVISIBLE_KEYS = ["C#", "F#"];
+
+export const MIN_PREVIEW_VOLUME_DB = -20;
+export const MAX_PREVIEW_VOLUME_DB = 5;
+export const VOLUME_SLIDER_MUTE_THRESHOLD = 2;
+export const PREVIEW_NOTE_TYPE = "8n";

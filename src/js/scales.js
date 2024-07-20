@@ -25,6 +25,3 @@ export const SCALES = {
     "Gm": ["G", "A", "A#", "C", "D", "D#", "F", "G"],
     "G#m": ["G#", "A#", "B", "C#", "D#", "E", "F#", "G#"]
 };
-
-// scales that don't exist
-// B#, E#

@@ -20,6 +20,19 @@
   font-weight: 400;
   letter-spacing: 0.5px;
 }
+#controls .control-row select {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px 5px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  height: 24px;
+  min-width: 60px;
+}
+#controls .control-row select, #controls .control-row select option {
+  text-align: center;
+}
 #controls .control-row .action-button {
   font-weight: 500;
   background-color: transparent;
@@ -38,28 +51,15 @@
   color: #282c30;
 }
 
-#scale-control-row #note-select, #scale-control-row #accidental-select {
-  width: 50px;
-}
 #scale-control-row select {
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 5px 5px;
-  border-radius: 5px;
-  text-transform: uppercase;
   margin-right: 10px;
-  height: 25px;
-}
-#scale-control-row select, #scale-control-row select option {
-  text-align: center;
 }
 #scale-control-row #major-minor-select {
   font-size: 14px;
 }
 #scale-control-row #random-button {
-  height: 30px;
-  line-height: 1.4em;
+  height: 29px;
+  line-height: 1.3em;
 }
 
 #volume-control-row {
