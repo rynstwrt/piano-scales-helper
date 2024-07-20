@@ -59,15 +59,13 @@ button
 
         .action-button
         {
-            //margin-left: 25px;
-            margin-left: 10px;
             font-weight: 500;
             background-color: transparent;
-            width: 150px;
-            height: 30px;
+            height: 28px;
             border: 1px solid $accent-color;
             color: $accent-color;
             transition: background-color .2s ease-in-out, color .2s ease-in-out;
+            padding: 5px 12px;
 
             &:hover
             {
@@ -81,8 +79,6 @@ button
 
 #scale-control-row
 {
-    justify-content: space-between;
-
     #note-select, #accidental-select
     {
         width: 50px;
@@ -102,36 +98,24 @@ button
     {
         font-size: 14px;
     }
-
-    #random-button
-    {
-        width: 100px;
-    }
 }
 
 
 #volume-control-row
 {
     display: flex;
-    justify-content: space-between;
 
-    .control-row-left-section
+    #volume-range
     {
         width: 100%;
+    }
 
-        #volume-range
-        {
-            width: 100%;
-            //min-width: 100%;
-        }
-
-        output
-        {
-            color: $accent-color;
-            font-weight: 400;
-            margin-left: 5px;
-            min-width: 30px;
-        }
+    #volume-range-output
+    {
+        color: $accent-color;
+        font-weight: 400;
+        margin-right: 5px;
+        //min-width: 30px;
     }
 }
 
@@ -142,6 +126,6 @@ button
 
     #play-button
     {
-        //margin-left: 25px;
+        width: 150px;
     }
 }

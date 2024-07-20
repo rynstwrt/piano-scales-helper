@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function App()
 {
-    const [scale, setScale] = useState("D#m");
+    const [scale, setScale] = useState("A");
 
     return (
         <main>

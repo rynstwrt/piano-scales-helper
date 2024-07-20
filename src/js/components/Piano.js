@@ -46,7 +46,7 @@ export default function Piano({ scaleName })
             whiteKeys.push(<Key
                 key={i}
                 color={"white"}
-                note={note + noteOctave}
+                note={note}
                 highlighted={shouldBeHighlighted}
                 octave={noteOctave}
             />);
@@ -68,7 +68,7 @@ export default function Piano({ scaleName })
             blackKeys.push(<Key
                 key={i}
                 color={"black"}
-                note={note + noteOctave}
+                note={note}
                 highlighted={shouldBeHighlighted}
                 octave={noteOctave}
                 invisible={false}

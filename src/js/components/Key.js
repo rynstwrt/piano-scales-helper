@@ -2,9 +2,6 @@ import "../../css/Key.css";
 import AudioPlayer from "../AudioPlayer";
 
 
-// const KEY_AUDIO_OCTAVE = 4;
-
-
 export default function Key({ color, note, highlighted, invisible, octave })
 {
     const keyClasses = ["piano-key", `${color}-key`];
