@@ -1,28 +1,9 @@
 @import "partials/constants";
 
 
-select
-{
-    font-family: inherit;
-    font-weight: 500;
-    font-size: 14px;
-    padding: 5px 5px;
-    border-radius: 5px;
-    text-transform: uppercase;
-
-    &, option
-    {
-        text-align: center;
-    }
-}
-
-
 button
 {
-    font-family: inherit;
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
+
 }
 
 
@@ -44,13 +25,6 @@ button
         margin: 1px 0;
         user-select: none;
 
-        .control-row-left-section
-        {
-            display: flex;
-            align-items: center;
-            //width: 100%;
-        }
-
         .control-label
         {
             color: white;
@@ -64,11 +38,16 @@ button
         {
             font-weight: 500;
             background-color: transparent;
-            height: 28px;
+            //height: 28px;
             border: 1px solid $accent-color;
             color: $accent-color;
             transition: background-color .2s ease-in-out, color .2s ease-in-out;
-            padding: 5px 12px;
+            padding: 7px 12px;
+            font-family: inherit;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
 
             &:hover
             {
@@ -89,17 +68,30 @@ button
 
     select
     {
+        font-family: inherit;
+        font-weight: 500;
+        font-size: 14px;
+        padding: 5px 5px;
+        border-radius: 5px;
+        text-transform: uppercase;
         margin-right: 10px;
-    }
-
-    select, #minor-button
-    {
         height: 25px;
+
+        &, option
+        {
+            text-align: center;
+        }
     }
 
     #major-minor-select
     {
         font-size: 14px;
+    }
+
+    #random-button
+    {
+        height: 30px;
+        line-height: 1.4em;
     }
 }
 
@@ -153,5 +145,6 @@ button
         width: 150px;
         height: 35px;
         margin-top: 5px;
+        line-height: 1.7em;
     }
 }
