@@ -78,12 +78,20 @@ export default function Piano({ scaleName })
 
 
     return (
-        <div className={"piano"}>
-            <div className={"piano-layer"} id={"white-keys"}>
-                { whiteKeys }
+        <div id={"piano-container"}>
+            <div id={"piano-top"}>
+                <div className={"speaker"}></div>
+                <div id={"screen"}></div>
+                <div className={"speaker"}></div>
             </div>
-            <div className={"piano-layer"} id={"black-keys"}>
-                { blackKeys }
+
+            <div className={"piano"}>
+                <div className={"piano-layer"} id={"white-keys"}>
+                    { whiteKeys }
+                </div>
+                <div className={"piano-layer"} id={"black-keys"}>
+                    { blackKeys }
+                </div>
             </div>
         </div>
     );
