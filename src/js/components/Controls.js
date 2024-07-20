@@ -5,7 +5,7 @@ import AudioPlayer from "../AudioPlayer";
 const NOTES_WITH_NO_SHARPS = ["B", "E"];
 
 
-export default function Controls({ setScale })
+export default function Controls({ initialScale, setScale })
 {
     function validateAccidental()
     {
@@ -38,7 +38,7 @@ export default function Controls({ setScale })
         const majorMinorSelect = document.querySelector("#major-minor-select");
         majorMinorSelect.value = Math.random() > 0.5 ? "major" : "minor";
 
-        onSubmitButtonClick();
+        onKeyOptionChanged();
     }
 
 
@@ -51,8 +51,27 @@ export default function Controls({ setScale })
     }
 
 
-    function onSubmitButtonClick()
+    function setElementsFromInitialScale()
     {
+        const note = initialScale.split("")[0];
+        const isSharp = initialScale.includes("#");
+        const isMinor = initialScale.endsWith("m");
+
+        const noteSelect = document.querySelector("#note-select");
+        // if (!noteSelect) return;
+        noteSelect.value = note;
+
+        const accidentalSelect = document.querySelector("#accidental-select");
+        accidentalSelect.value = isSharp ? "#" : "";
+
+        const majorMinorSelect = document.querySelector("#major-minor-select");
+        majorMinorSelect.value = isMinor ? "minor" : "major";
+    }
+
+
+    function onKeyOptionChanged()
+    {
+        validateAccidental();
         setScale(getScaleFromElements());
     }
 
@@ -69,12 +88,17 @@ export default function Controls({ setScale })
     }
 
 
+    const initialNote = initialScale.split("")[0];
+    const initialScaleIsSharp = initialScale.includes("#");
+    const initialScaleIsMinor = initialScale.endsWith("m");
+
+
     return (
         <div id={"controls"}>
             <div id={"scale-control-row"} className={"control-row"}>
                 <div className={"control-row-left-section"}>
                     <label>Key:</label>
-                    <select id={"note-select"} onChange={validateAccidental}>
+                    <select id={"note-select"} onChange={onKeyOptionChanged} value={initialNote}>
                         <option>A</option>
                         <option>B</option>
                         <option>C</option>
@@ -83,19 +107,18 @@ export default function Controls({ setScale })
                         <option>F</option>
                         <option>G</option>
                     </select>
-                    <select id={"accidental-select"}>
+                    <select id={"accidental-select"} onChange={onKeyOptionChanged} value={initialScaleIsSharp ? "#" : ""}>
                         <option value={""}>♮</option>
                         <option value={"#"}>#</option>
                         {/*<option value={"b"}>b</option>*/}
                     </select>
-                    <select id={"major-minor-select"}>
+                    <select id={"major-minor-select"} onChange={onKeyOptionChanged} value={initialScaleIsMinor ? "minor" : "major"}>
                         <option value={"major"}>Major</option>
                         <option value={"minor"}>Minor</option>
                     </select>
                 </div>
 
                 <button className={"action-button"} id={"random-button"} onClick={onRandomButtonClick}>Random</button>
-                <button className={"action-button"} id={"submit-button"} onClick={onSubmitButtonClick}>Submit</button>
             </div>
 
 

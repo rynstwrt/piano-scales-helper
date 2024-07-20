@@ -22,6 +22,14 @@ export default class AudioPlayer
     static #sequence = null;
 
 
+    static async #createSynthIfNotExist()
+    {
+        await Tone.start();
+        this.#synth = new Tone.Synth().toDestination();
+        this.setVolume(this.#volume);
+    }
+
+
     static setVolume(volume)
     {
         this.#volume = volume;
@@ -38,9 +46,7 @@ export default class AudioPlayer
     {
         if (!this.#synth)
         {
-            await Tone.start();
-            this.#synth = new Tone.Synth().toDestination();
-            this.setVolume(this.#volume);
+            await this.#createSynthIfNotExist();
         }
         else
         {
@@ -72,5 +78,20 @@ export default class AudioPlayer
         this.#sequence.loop = false;
         this.#sequence.start();
         Tone.getTransport().start();
+    }
+
+
+    static async playNote(note)
+    {
+        if (!this.#synth)
+        {
+            await this.#createSynthIfNotExist();
+        }
+        else
+        {
+            // Tone.getTransport().stop();
+        }
+
+        this.#synth.triggerAttackRelease(note, NOTE_TYPE);
     }
 }
