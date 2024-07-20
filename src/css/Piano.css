@@ -7,6 +7,7 @@
   padding: 0 40px;
   border-radius: 25px;
   border: 1px solid rgba(0, 224, 183, 0.7);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 #piano-container #piano-top {
   width: 100%;
