@@ -8,8 +8,9 @@ $white-key-height: 150px;
 $black-key-width: 27px;
 $black-key-height: 90px;
 
-$background-color: #1c1c1c;
-$lighter-background: lighten($background-color, 12%);
+$background-color: darken(#212529, 3%);
+$lighter-background: lighten(#272B2F, 0.5%);
+$lighter-background-2: #2A2E32;
 
 $accent-color:  #00e0b7;
 $highlight-color: #00e0b7;

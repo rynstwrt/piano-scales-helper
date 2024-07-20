@@ -34,7 +34,7 @@ export default function Controls({ initialScale, setScale })
         validateAccidental();
 
         const majorMinorSelect = document.querySelector("#major-minor-select");
-        majorMinorSelect.value = Math.random() > 0.5 ? "major" : "minor";
+        majorMinorSelect.value = Math.random() < 0.5 ? "major" : "minor";
 
         onKeyOptionChanged();
     }

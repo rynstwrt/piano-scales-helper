@@ -4,7 +4,7 @@
   height: 150px;
   pointer-events: none;
   box-sizing: content-box;
-  border: 5px solid #3b3b3b;
+  border: 5px solid #282c30;
 }
 .piano .piano-layer {
   position: absolute;
