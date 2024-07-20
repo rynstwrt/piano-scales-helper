@@ -14,4 +14,6 @@ $lighter-background-2: lighten($lighter-background, 3%);
 $lighter-background-3: lighten($background-color, 2%);
 
 $accent-color:  #00e0b7;
+$accent-transparent: rgba($accent-color, 0.7);
+
 $highlight-color: #00e0b7;

@@ -1,12 +1,6 @@
 @import "partials/constants";
 
 
-button
-{
-
-}
-
-
 #controls
 {
     background-color: $lighter-background;
@@ -14,15 +8,17 @@ button
     margin-top: 40px;
     padding: 20px 15px;
     width: 100%;
-    box-sizing: content-box;
-    border-radius: 20px;
+    //box-sizing: content-box;
+    border-radius: 10px;
+    //border: 1px solid rgba($accent-transparent, 0.25);
 
     .control-row
     {
         display: flex;
         align-items: center;
         font-family: $font-1;
-        padding: 7px;
+        //padding: 7px;
+        min-height: 37px;
         margin: 1px 0;
         user-select: none;
 
@@ -145,7 +141,7 @@ button
     {
         width: 150px;
         height: 35px;
-        margin-top: 5px;
         line-height: 1.7em;
+        margin-top: 15px;
     }
 }

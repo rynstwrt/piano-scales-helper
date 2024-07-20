@@ -3,14 +3,13 @@
   margin-top: 40px;
   padding: 20px 15px;
   width: 100%;
-  box-sizing: content-box;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 #controls .control-row {
   display: flex;
   align-items: center;
   font-family: "Josefin Sans", sans-serif;
-  padding: 7px;
+  min-height: 37px;
   margin: 1px 0;
   user-select: none;
 }
@@ -92,8 +91,8 @@
 #play-button-control-row #play-button {
   width: 150px;
   height: 35px;
-  margin-top: 5px;
   line-height: 1.7em;
+  margin-top: 15px;
 }
 
 /*# sourceMappingURL=Controls.css.map */

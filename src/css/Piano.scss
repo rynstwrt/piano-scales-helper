@@ -9,7 +9,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-    border-radius: 20px;
+    border-radius: 25px;
+    border: 1px solid $accent-transparent;
 
     #piano-top
     {
@@ -34,6 +35,11 @@
             height: 60px;
             border-radius: 10px;
             margin: 0 20px;
+        }
+
+        .speaker, #screen
+        {
+            border: 1px solid $accent-transparent;
         }
     }
 }
