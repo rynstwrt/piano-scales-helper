@@ -6,11 +6,11 @@ import { useState } from "react";
 
 export default function App()
 {
-    const [scale, setScale] = useState("Dm");
+    const [scale, setScale] = useState("D#m");
 
     return (
         <main>
-            <Piano scale={scale} />
+            <Piano scaleName={scale} />
             <Controls initialScale={scale} setScale={setScale} />
         </main>
     );

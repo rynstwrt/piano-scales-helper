@@ -4,134 +4,80 @@ import { SCALES } from "../scales";
 
 
 const NUM_WHITE_KEYS = 14;
-const INVISIBLE_BLACK_KEY_INDEXES = [0, 4, 7, 11, 14];
-const WHITE_KEY_NOTES = ["F", "G", "A", "B", "C", "D", "E"];
-const BLACK_KEY_NOTES = ["F#", "G#", "A#", "C#", "D#"];
+const NUM_BLACK_KEYS = 10;
+const START_NOTE_OFFSET = 8;
 const KEY_START_OCTAVE = 3;
 
 
-export default function Piano({ scale })
+export default function Piano({ scaleName })
 {
-    let firstScaleNoteLocation = null;
+    let whiteKeys = [];
+    let blackKeys = [];
 
+    const pianoNotes = Object.keys(SCALES).filter(scaleName => !scaleName.endsWith("m"));
+    const scaleNotes = SCALES[scaleName];
 
-    const whiteKeys = [];
-    function doWhiteKeys()
+    let foundFirstScaleKey = false;
+    let foundLastScaleKey = false;
+
+    let noteOctave = KEY_START_OCTAVE;
+
+    for (let i = START_NOTE_OFFSET; i < NUM_WHITE_KEYS + NUM_BLACK_KEYS + START_NOTE_OFFSET; ++i)
     {
-        let whiteKeyNotesInScale = [];
-        if (scale)
-            whiteKeyNotesInScale = SCALES[scale].filter(note => !note.includes("#"));
+        const note = pianoNotes[i % pianoNotes.length];
 
-        const highlightedWhiteKeys = [];
-        let firstWhiteKeyFound = false;
-        let noteOctave = KEY_START_OCTAVE;
-        for (let i = 0; i < NUM_WHITE_KEYS; ++i)
+        if (note === "C")
+            ++noteOctave;
+
+        let foundFirstScaleKeyThisIteration = false;
+        if (!foundFirstScaleKey && scaleNotes[0] === note)
         {
-            const note = WHITE_KEY_NOTES[i % WHITE_KEY_NOTES.length];
-            if (note === "C")
-                ++noteOctave;
+            foundFirstScaleKey = true;
+            foundFirstScaleKeyThisIteration = true;
+        }
 
-            if (scale && !firstScaleNoteLocation && SCALES[scale][0] === note)
-                firstScaleNoteLocation = i;
+        const shouldBeHighlighted = scaleNotes.includes(note)
+            && foundFirstScaleKey
+            && !foundLastScaleKey;
 
-            if (scale && whiteKeyNotesInScale[0] === note)
-                firstWhiteKeyFound = true;
-
-            // const shouldBeHighlighted = scale
-            //     && SCALES[scale].includes(note)
-            //     && (!firstScaleNoteLocation || i >= firstScaleNoteLocation)
-            //     && !highlightedWhiteKeys.includes(note)
-            //     && firstWhiteKeyFound
-            //     && SCALES[scale].includes(note);
-
-            const shouldBeHighlighted = SCALES[scale].includes(note)
-                && !highlightedWhiteKeys.includes(note)
-                && firstWhiteKeyFound;
-
-            if (shouldBeHighlighted)
-                highlightedWhiteKeys.push(note);
-
+        const isWhiteKey = !note.endsWith("#");
+        if (isWhiteKey)
+        {
             whiteKeys.push(<Key
                 key={i}
                 color={"white"}
-                note={note}
+                note={note + noteOctave}
                 highlighted={shouldBeHighlighted}
                 octave={noteOctave}
             />);
         }
-    }
-
-
-    const blackKeys = [];
-    function doBlackKeys()
-    {
-        let blackKeyNotesInScale = [];
-        if (scale)
-            blackKeyNotesInScale = SCALES[scale].filter(note => note.includes("#"));
-
-        const highlightedBlackKeys = [];
-        let firstBlackKeyFound = false;
-        let blackKeyNoteCounter = 0;
-        let noteOctave = KEY_START_OCTAVE;
-        for (let i = 0; i < NUM_WHITE_KEYS; ++i)
+        else
         {
-            const isInvisibleKey = INVISIBLE_BLACK_KEY_INDEXES.includes(i);
-            const note = isInvisibleKey ? null : BLACK_KEY_NOTES[blackKeyNoteCounter % BLACK_KEY_NOTES.length]
-            if (note === "C#")
-                ++noteOctave;
-
-            if (scale && !firstScaleNoteLocation && SCALES[scale][0] === note)
-                firstScaleNoteLocation = blackKeyNoteCounter;
-
-            if (scale && blackKeyNotesInScale[0] === note)
-                firstBlackKeyFound = true;
-
-            // const shouldBeHighlighted = scale
-            //     && !isInvisibleKey
-            //     && (!firstScaleNoteLocation || blackKeyNoteCounter >= firstScaleNoteLocation)
-            //     && !highlightedBlackKeys.includes(note)
-            //     && firstBlackKeyFound
-            //     && SCALES[scale].includes(note);
-
-            const shouldBeHighlighted = SCALES[scale].includes(note)
-                && !highlightedBlackKeys.includes(note)
-                && firstBlackKeyFound;
-
-            if (shouldBeHighlighted)
-                highlightedBlackKeys.push(note);
+            if (["C#", "F#"].includes(note))
+            {
+                blackKeys.push(<Key
+                    key={i}
+                    color={"black"}
+                    // note={note + noteOctave}
+                    highlighted={false}
+                    // octave={noteOctave}
+                    invisible={true}
+                />);
+            }
 
             blackKeys.push(<Key
                 key={i}
                 color={"black"}
-                note={note}
-                invisible={isInvisibleKey}
-                // highlighted={shouldBeHighlighted}
+                note={note + noteOctave}
+                highlighted={shouldBeHighlighted}
                 octave={noteOctave}
+                invisible={false}
             />);
-
-            if (!isInvisibleKey)
-                ++blackKeyNoteCounter;
         }
+
+        if (foundFirstScaleKey && !foundFirstScaleKeyThisIteration && scaleNotes[scaleNotes.length - 1] === note)
+            foundLastScaleKey = true;
     }
-
-
-    if (scale && SCALES[scale][0].includes("#"))
-    {
-        doBlackKeys();
-        doWhiteKeys();
-    }
-    else
-    {
-        doWhiteKeys();
-        doBlackKeys();
-    }
-
-
-    /*
-        BROKEN SCALE HIGHLIGHTING:
-        Dm
-        E
-     */
 
 
     return (
