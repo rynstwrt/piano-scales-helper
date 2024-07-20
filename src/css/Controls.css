@@ -78,6 +78,8 @@ button {
   color: #00e0b7;
   font-weight: 400;
   margin-right: 5px;
+  min-width: 40px;
+  text-align: right;
 }
 
 #audio-control-row {
