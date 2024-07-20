@@ -19,19 +19,42 @@
 .piano-key.white-key .key-content:not(.piano-key.white-key .key-content:last-of-type) > .white-key {
   border-right: 1px solid black;
 }
+.piano-key.white-key .key-content:hover:before {
+  opacity: 0.08;
+}
+.piano-key.white-key .key-content:active:before {
+  opacity: 0.2;
+}
 .piano-key.black-key.invisible {
   visibility: hidden;
 }
 .piano-key.black-key .key-content {
   width: 27px;
   height: 90px;
-  background-color: black;
+  background-color: #1a1a1a;
   margin: 0 auto;
   color: white;
+}
+.piano-key.black-key .key-content:hover:before {
+  opacity: 0.5;
+}
+.piano-key.black-key .key-content:active:before {
+  opacity: 1;
 }
 .piano-key .key-content {
   position: relative;
   pointer-events: all;
+}
+.piano-key .key-content:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.075s ease-in-out;
 }
 .piano-key .key-content .note-container {
   position: absolute;

@@ -33,6 +33,16 @@
             {
                 border-right: 1px solid black;
             }
+
+            &:hover:before
+            {
+                opacity: 0.08;
+            }
+
+            &:active:before
+            {
+                opacity: 0.2;
+            }
         }
     }
 
@@ -47,9 +57,19 @@
         {
             width: $black-key-width;
             height: $black-key-height;
-            background-color: black;
+            background-color: lighten(black, 10%);
             margin: 0 auto;
             color: white;
+
+            &:hover:before
+            {
+                opacity: 0.5;
+            }
+
+            &:active:before
+            {
+                opacity: 1;
+            }
         }
     }
 
@@ -57,6 +77,19 @@
     {
         position: relative;
         pointer-events: all;
+
+        &:before
+        {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: black;
+            opacity: 0;
+            transition: opacity 0.075s ease-in-out;
+        }
 
         .note-container
         {
