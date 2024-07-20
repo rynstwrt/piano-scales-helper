@@ -51,7 +51,9 @@ export default class AudioPlayer
         else
         {
             // cancel, clear, dispose, stop,
-            this.#sequence.stop();
+            if (this.#sequence)
+                this.#sequence.stop();
+
             Tone.getTransport().stop();
         }
 
@@ -72,7 +74,9 @@ export default class AudioPlayer
             this.#synth.triggerAttackRelease(note, 0.1, time);
 
             if (scaleNotes[scaleNotes.length - 1] === note)
+            {
                 Tone.getTransport().stop();
+            }
         }, scaleNotesWithOctave, NOTE_TYPE);
 
         this.#sequence.loop = false;
@@ -86,10 +90,6 @@ export default class AudioPlayer
         if (!this.#synth)
         {
             await this.#createSynthIfNotExist();
-        }
-        else
-        {
-            // Tone.getTransport().stop();
         }
 
         this.#synth.triggerAttackRelease(note, NOTE_TYPE);
