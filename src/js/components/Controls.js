@@ -122,14 +122,17 @@ export default function Controls({ initialScale, setScale })
             </div>
 
 
-            <div id={"audio-control-row"} className={"control-row"}>
+            <div id={"volume-control-row"} className={"control-row"}>
                 <div className={"control-row-left-section"}>
-                    <label>Audio:</label>
+                    <label>Volume:</label>
                     <input id={"volume-range"} type={"range"} min={0} max={100} defaultValue={50} step={1} onChange={onVolumeSliderChange} />
                     {/*<output id={"volume-range-output"}>{volume}</output>*/}
                 </div>
+            </div>
 
-                <button className={"action-button"} id={"play-button"} onClick={onPlayButtonClick}>Play</button>
+
+            <div id={"audio-control-row"} className={"control-row"}>
+                <button className={"action-button"} id={"play-button"} onClick={onPlayButtonClick}>Play Scale</button>
             </div>
         </div>
     );

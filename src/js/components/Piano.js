@@ -105,8 +105,7 @@ export default function Piano({ scale })
                 color={"black"}
                 note={note}
                 invisible={isInvisibleKey}
-                // highlighted={false}
-                highlighted={shouldBeHighlighted}
+                // highlighted={shouldBeHighlighted}
                 octave={noteOctave}
             />);
 
@@ -130,7 +129,8 @@ export default function Piano({ scale })
 
     /*
         BROKEN SCALE HIGHLIGHTING:
-        Fm
+        Dm
+        E
      */
 
 

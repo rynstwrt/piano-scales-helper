@@ -26,7 +26,6 @@ button {
 }
 #controls .control-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   font-family: "Josefin Sans", sans-serif;
   padding: 7px;
@@ -57,6 +56,9 @@ button {
   color: #3b3b3b;
 }
 
+#scale-control-row {
+  justify-content: space-between;
+}
 #scale-control-row #note-select, #scale-control-row #accidental-select {
   width: 50px;
 }
@@ -73,23 +75,25 @@ button {
   width: 100px;
 }
 
-#audio-control-row {
+#volume-control-row {
   display: flex;
+  justify-content: space-between;
 }
-#audio-control-row .control-row-left-section {
+#volume-control-row .control-row-left-section {
   width: 100%;
 }
-#audio-control-row .control-row-left-section #volume-range {
+#volume-control-row .control-row-left-section #volume-range {
   width: 100%;
 }
-#audio-control-row .control-row-left-section output {
+#volume-control-row .control-row-left-section output {
   color: #00e0b7;
   font-weight: 400;
   margin-left: 5px;
   min-width: 30px;
 }
-#audio-control-row #play-button {
-  margin-left: 25px;
+
+#audio-control-row {
+  justify-content: center;
 }
 
 /*# sourceMappingURL=Controls.css.map */
