@@ -8,21 +8,17 @@ export default class Util
         const isMinor = scaleName.endsWith("m");
         const rootNote = isMinor ? scaleName.slice(0, -1) : scaleName;
 
-        const formula = isMinor ? MINOR_SCALE_FORMULA : MAJOR_SCALE_FORMULA;
+        const scaleFormula = isMinor ? MINOR_SCALE_FORMULA : MAJOR_SCALE_FORMULA;
 
-        const scale = [];
+        const scaleNotes = [];
         let index = PIANO_NOTES.indexOf(rootNote);
         for (let i = 0; i < 8; ++i)
         {
-            scale.push(PIANO_NOTES[index % PIANO_NOTES.length]);
-
-            const wholeHalf = formula[i];
-            if (wholeHalf === "W")
-                index += 2;
-            else
-                ++index;
+            scaleNotes.push(PIANO_NOTES[index % PIANO_NOTES.length]);
+            index += (scaleFormula[i] === "W") ? 2 : 1;
         }
 
-        return scale;
+        return scaleNotes;
     }
 }
+
