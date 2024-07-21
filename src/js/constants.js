@@ -16,4 +16,5 @@ export const MINOR_SCALE_FORMULA = ["W", "H", "W", "W", "H", "W", "W"];
 export const MIN_PREVIEW_VOLUME_DB = -20;
 export const MAX_PREVIEW_VOLUME_DB = 5;
 export const VOLUME_SLIDER_MUTE_THRESHOLD = 2;
-export const PREVIEW_NOTE_TYPE = "8n";
+export const PREVIEW_BPM = 80;
+export const PREVIEW_NOTE_TYPE = "4n";

@@ -1,6 +1,8 @@
 import "../../css/Controls.css";
-import AudioPlayer from "../AudioPlayer";
+// import AudioPlayer from "../AudioPlayer";
+import NewAudioPlayer from "../NewAudioPlayer";
 import { NOTES_WITH_NO_SHARPS } from "../constants";
+import Util from "../Util";
 
 
 export default function Controls({ initialScale, setScale })
@@ -60,14 +62,15 @@ export default function Controls({ initialScale, setScale })
     {
         const newVolume = event.target.value;
         document.querySelector("#volume-range-output").value = `${newVolume}%`;
-        AudioPlayer.setVolume(newVolume);
+        // AudioPlayer.setVolume(newVolume);
     }
 
 
     function onPlayButtonClick()
     {
         const octave = document.querySelector("#preview-octave-select").value;
-        AudioPlayer.playScale(getScaleFromElements(), octave);
+        new NewAudioPlayer().playScale(Util.getScaleFromName(getScaleFromElements()), Number(octave));
+        // AudioPlayer.playScale(getScaleFromElements(), octave);
     }
 
 

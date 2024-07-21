@@ -1,5 +1,6 @@
 import "../../css/Key.css";
-import AudioPlayer from "../AudioPlayer";
+import NewAudioPlayer from "../NewAudioPlayer";
+// import AudioPlayer from "../AudioPlayer";
 
 
 export default function Key({ color, note, highlighted, invisible, octave })
@@ -15,7 +16,8 @@ export default function Key({ color, note, highlighted, invisible, octave })
 
         const keyContent = event.target;
         const note = keyContent.textContent;
-        await AudioPlayer.playNote(note + octave);
+        // await AudioPlayer.playNote(note + octave);
+        new NewAudioPlayer().playNote(note, octave, 0);
     }
 
     return (
