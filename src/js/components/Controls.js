@@ -80,7 +80,7 @@ export default function Controls({ initialScale, setScale })
         <div id={"controls"}>
             <div id={"scale-control-row"} className={"control-row"}>
                 <label className={"control-label"}>Scale:</label>
-                <select id={"note-select"} onChange={onKeyOptionChanged} value={initialNote}>
+                <select id={"note-select"} onChange={onKeyOptionChanged} defaultValue={initialNote}>
                     <option>A</option>
                     <option>B</option>
                     <option>C</option>
@@ -89,12 +89,12 @@ export default function Controls({ initialScale, setScale })
                     <option>F</option>
                     <option>G</option>
                 </select>
-                <select id={"accidental-select"} onChange={onKeyOptionChanged} value={initialScaleIsSharp ? "#" : ""}>
+                <select id={"accidental-select"} onChange={onKeyOptionChanged} defaultValue={initialScaleIsSharp ? "#" : ""}>
                     <option value={""}>♮</option>
                     <option value={"#"}>#</option>
                     {/*<option value={"b"}>b</option>*/}
                 </select>
-                <select id={"major-minor-select"} onChange={onKeyOptionChanged} value={initialScaleIsMinor ? "minor" : "major"}>
+                <select id={"major-minor-select"} onChange={onKeyOptionChanged} defaultValue={initialScaleIsMinor ? "minor" : "major"}>
                     <option value={"major"}>Major</option>
                     <option value={"minor"}>Minor</option>
                 </select>
@@ -112,9 +112,9 @@ export default function Controls({ initialScale, setScale })
 
             <div id={"preview-octave-control-row"} className={"control-row"}>
                 <label className={"control-label"}>Preview Octave:</label>
-                <select id={"preview-octave-select"}>
+                <select id={"preview-octave-select"} defaultValue={3}>
                     <option>2</option>
-                    <option selected={true}>3</option>
+                    <option>3</option>
                     <option>4</option>
                     <option>5</option>
                 </select>

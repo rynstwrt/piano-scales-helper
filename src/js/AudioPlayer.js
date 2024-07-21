@@ -1,6 +1,6 @@
 import * as Tone from "tone";
-import {SCALES} from "./scales";
 import { MIN_PREVIEW_VOLUME_DB, MAX_PREVIEW_VOLUME_DB, VOLUME_SLIDER_MUTE_THRESHOLD, PREVIEW_NOTE_TYPE } from "./constants";
+import Util from "./Util";
 
 
 function mapRange(number, inMin, inMax, outMin, outMax)
@@ -51,9 +51,9 @@ export default class AudioPlayer
             Tone.getTransport().stop();
         }
 
-        const scaleNotes = SCALES[scale];
+        const scaleNotes = Util.getScaleFromName(scale);
         let octave = startOctave;
-        const scaleNotesWithOctave = SCALES[scale].map((note, i) =>
+        const scaleNotesWithOctave = scaleNotes.map((note, i) =>
         {
             const n = note + octave;
 

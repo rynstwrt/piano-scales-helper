@@ -1,6 +1,5 @@
 import "../../css/Piano.css";
 import Key from "./Key";
-import { SCALES } from "../scales";
 import {
     PIANO_NOTES,
     NUM_WHITE_KEYS,
@@ -9,6 +8,7 @@ import {
     KEY_START_OCTAVE,
     BLACK_NOTES_AFTER_INVISIBLE_KEYS
 } from "../constants";
+import Util from "../Util";
 
 
 export default function Piano({ scaleName })
@@ -16,7 +16,7 @@ export default function Piano({ scaleName })
     let whiteKeys = [];
     let blackKeys = [];
 
-    const scaleNotes = SCALES[scaleName];
+    const scaleNotes = Util.getScaleFromName(scaleName);
 
     let foundFirstScaleKey = false;
     let foundLastScaleKey = false;
@@ -57,7 +57,7 @@ export default function Piano({ scaleName })
             if (BLACK_NOTES_AFTER_INVISIBLE_KEYS.includes(note))
             {
                 blackKeys.push(<Key
-                    key={i}
+                    key={"invisible" + i}
                     color={"black"}
                     invisible={true}
                 />);
