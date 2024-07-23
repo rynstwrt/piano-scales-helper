@@ -28,6 +28,10 @@
   height: 60px;
   border-radius: 10px;
   margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 #piano-container #piano-top .speaker, #piano-container #piano-top #screen {
   border: 1px solid rgba(0, 224, 183, 0.7);

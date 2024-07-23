@@ -1,8 +1,8 @@
 import "../../css/Controls.css";
-// import AudioPlayer from "../AudioPlayer";
-import NewAudioPlayer from "../NewAudioPlayer";
+import AudioPlayer from "../AudioPlayer";
+// import NewAudioPlayer from "../NewAudioPlayer";
 import { NOTES_WITH_NO_SHARPS } from "../constants";
-import Util from "../Util";
+// import Util from "../Util";
 
 
 export default function Controls({ initialScale, setScale })
@@ -62,15 +62,15 @@ export default function Controls({ initialScale, setScale })
     {
         const newVolume = event.target.value;
         document.querySelector("#volume-range-output").value = `${newVolume}%`;
-        // AudioPlayer.setVolume(newVolume);
+        AudioPlayer.setVolume(newVolume);
     }
 
 
     function onPlayButtonClick()
     {
         const octave = document.querySelector("#preview-octave-select").value;
-        new NewAudioPlayer().playScale(Util.getScaleFromName(getScaleFromElements()), Number(octave));
-        // AudioPlayer.playScale(getScaleFromElements(), octave);
+        // new NewAudioPlayer().playScale(Util.getScaleFromName(getScaleFromElements()), Number(octave));
+        AudioPlayer.playScale(getScaleFromElements(), octave);
     }
 
 
@@ -108,8 +108,8 @@ export default function Controls({ initialScale, setScale })
 
             <div id={"volume-control-row"} className={"control-row"}>
                 <label className={"control-label"}>Volume:</label>
-                <output id={"volume-range-output"}>50%</output>
-                <input id={"volume-range"} type={"range"} min={0} max={100} defaultValue={50} step={1} onChange={onVolumeSliderChange} />
+                <output id={"volume-range-output"}>75%</output>
+                <input id={"volume-range"} type={"range"} min={0} max={100} defaultValue={75} step={1} onChange={onVolumeSliderChange} />
             </div>
 
 

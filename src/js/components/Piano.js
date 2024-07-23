@@ -9,6 +9,7 @@ import {
     BLACK_NOTES_AFTER_INVISIBLE_KEYS
 } from "../constants";
 import Util from "../Util";
+import AudioVisualizer from "./AudioVisualizer";
 
 
 export default function Piano({ scaleName })
@@ -81,7 +82,9 @@ export default function Piano({ scaleName })
         <div id={"piano-container"}>
             <div id={"piano-top"}>
                 <div className={"speaker"}></div>
-                <div id={"screen"}></div>
+                <div id={"screen"}>
+                    <AudioVisualizer />
+                </div>
                 <div className={"speaker"}></div>
             </div>
 

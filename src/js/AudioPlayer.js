@@ -12,20 +12,32 @@ function mapRange(number, inMin, inMax, outMin, outMax)
 export default class AudioPlayer
 {
     static #synth = null;
-    static #volume = 50;
+    static #volume = 75;
     static #sequence = null;
+    static #analyzer = null;
 
 
     static async #createSynthIfNotExist()
     {
         await Tone.start();
-        this.#synth = new Tone.Synth().toDestination();
+
+        console.log("setting analyzer");
+        // this.#analyzer = new Tone.Analyser("waveform", 128);
+        this.#analyzer = new Tone.Analyser("waveform", 32);
+
+        this.#synth = new Tone.Synth();
+        // this.#synth = new Tone.Synth().toDestination();
         this.setVolume(this.#volume);
+
+        this.#synth.connect(this.#analyzer).toDestination();
     }
 
 
     static setVolume(volume)
     {
+        // if (this.#analyzer)
+        //     console.log(this.#analyzer.getValue());
+
         this.#volume = volume;
 
         if (!this.#synth)
@@ -41,6 +53,8 @@ export default class AudioPlayer
         if (!this.#synth)
         {
             await this.#createSynthIfNotExist();
+            const a = this.#analyzer.getValue();
+            console.log(a);
         }
         else
         {
@@ -87,5 +101,12 @@ export default class AudioPlayer
         }
 
         this.#synth.triggerAttackRelease(note, PREVIEW_NOTE_TYPE);
+    }
+
+
+    static getAnalyzerData()
+    {
+        if (this.#analyzer)
+            return this.#analyzer.getValue();
     }
 }
