@@ -1,8 +1,6 @@
 import "../../css/Controls.css";
 import AudioPlayer from "../AudioPlayer";
-// import NewAudioPlayer from "../NewAudioPlayer";
 import { NOTES_WITH_NO_SHARPS } from "../constants";
-// import Util from "../Util";
 
 
 export default function Controls({ initialScale, setScale })
@@ -69,7 +67,6 @@ export default function Controls({ initialScale, setScale })
     function onPlayButtonClick()
     {
         const octave = document.querySelector("#preview-octave-select").value;
-        // new NewAudioPlayer().playScale(Util.getScaleFromName(getScaleFromElements()), Number(octave));
         AudioPlayer.playScale(getScaleFromElements(), octave);
     }
 

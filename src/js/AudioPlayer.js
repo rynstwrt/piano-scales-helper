@@ -1,5 +1,5 @@
 import * as Tone from "tone";
-import { MIN_PREVIEW_VOLUME_DB, MAX_PREVIEW_VOLUME_DB, VOLUME_SLIDER_MUTE_THRESHOLD, PREVIEW_NOTE_TYPE } from "./constants";
+import { MIN_PREVIEW_VOLUME_DB, MAX_PREVIEW_VOLUME_DB, VOLUME_SLIDER_MUTE_THRESHOLD, PREVIEW_NOTE_TYPE, VISUALIZER_FFT_SIZE } from "./constants";
 import Util from "./Util";
 
 
@@ -21,12 +21,9 @@ export default class AudioPlayer
     {
         await Tone.start();
 
-        console.log("setting analyzer");
-        // this.#analyzer = new Tone.Analyser("waveform", 128);
-        this.#analyzer = new Tone.Analyser("waveform", 32);
+        this.#analyzer = new Tone.Analyser("waveform", VISUALIZER_FFT_SIZE);
 
         this.#synth = new Tone.Synth();
-        // this.#synth = new Tone.Synth().toDestination();
         this.setVolume(this.#volume);
 
         this.#synth.connect(this.#analyzer).toDestination();
@@ -35,9 +32,6 @@ export default class AudioPlayer
 
     static setVolume(volume)
     {
-        // if (this.#analyzer)
-        //     console.log(this.#analyzer.getValue());
-
         this.#volume = volume;
 
         if (!this.#synth)
@@ -96,9 +90,7 @@ export default class AudioPlayer
     static async playNote(note)
     {
         if (!this.#synth)
-        {
             await this.#createSynthIfNotExist();
-        }
 
         this.#synth.triggerAttackRelease(note, PREVIEW_NOTE_TYPE);
     }

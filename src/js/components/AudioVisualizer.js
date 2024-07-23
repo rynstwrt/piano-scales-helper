@@ -1,9 +1,10 @@
 import AudioPlayer from "../AudioPlayer";
-import { VISUALIZER_CANVAS_HEIGHT, VISUALIZER_CANVAS_WIDTH } from "../constants";
+import { VISUALIZER_CANVAS_HEIGHT, VISUALIZER_CANVAS_WIDTH, VISUALIZER_COLOR } from "../constants";
 
 
 export default function AudioVisualizer()
 {
+
     async function drawAudioVisualizer()
     {
         const canvas = document.querySelector("#visualizer-canvas");
@@ -15,17 +16,19 @@ export default function AudioVisualizer()
         const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, VISUALIZER_CANVAS_WIDTH, VISUALIZER_CANVAS_HEIGHT);
 
+        ctx.fillStyle = VISUALIZER_COLOR;
+
         const numBars = data.length;
-        const barHeight = VISUALIZER_CANVAS_HEIGHT / numBars;
+        const barWidth = VISUALIZER_CANVAS_WIDTH / numBars;
 
         for (let i = 0; i < numBars; ++i)
         {
-            ctx.fillRect(0, barHeight * i, Math.abs(data[i]) * 10000, barHeight);
+            const currentBarHeight = Math.abs(data[i]) * 100;
+            ctx.fillRect(i * barWidth, VISUALIZER_CANVAS_HEIGHT / 2 - currentBarHeight / 2, barWidth, currentBarHeight);
         }
 
         window.requestAnimationFrame(drawAudioVisualizer);
     }
-
 
     window.requestAnimationFrame(drawAudioVisualizer);
 
