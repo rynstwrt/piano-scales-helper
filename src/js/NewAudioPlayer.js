@@ -40,17 +40,17 @@ export default class NewAudioPlayer
         const stopTime = time + this.#noteDelay;
         oscillator.stop(stopTime);
 
-        // gainNode.gain.setValueAtTime(1, stopTime - this.#noteDelay / 2);
-
-        // gainNode.gain.setValueAtTime(1, stopTime - 0.025);
-        // gainNode.gain.linearRampToValueAtTime(0, stopTime);
-
         gainNode.gain.setTargetAtTime(0, stopTime - this.#noteDelay / 2, this.#noteDelay / 2);
     }
 
 
     playScale(scaleNotes, startOctave)
     {
+        if (this.#context)
+        {
+            this.#context.close();
+        }
+
         let octave = startOctave;
 
         for (let i = 0; i < scaleNotes.length; ++i)
@@ -61,11 +61,5 @@ export default class NewAudioPlayer
             if (i < 7 && (note < "C" && scaleNotes[i + 1] >= "C"))
                 ++octave;
         }
-    }
-
-
-    stop()
-    {
-        this.#context.suspend();
     }
 }
