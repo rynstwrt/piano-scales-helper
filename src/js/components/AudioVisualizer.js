@@ -23,7 +23,7 @@ export default function AudioVisualizer()
 
         for (let i = 0; i < numBars; ++i)
         {
-            const currentBarHeight = Math.abs(data[i]) * 100;
+            const currentBarHeight = data[i] * 100;
             ctx.fillRect(i * barWidth, VISUALIZER_CANVAS_HEIGHT / 2 - currentBarHeight / 2, barWidth, currentBarHeight);
         }
 
