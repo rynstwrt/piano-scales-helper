@@ -1,4 +1,3 @@
-import "../../css/AudioVisualizer.css";
 import AudioPlayer from "../AudioPlayer";
 import { VISUALIZER_CANVAS_HEIGHT, VISUALIZER_CANVAS_WIDTH } from "../constants";
 
