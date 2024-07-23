@@ -1,5 +1,5 @@
 import AudioPlayer from "../AudioPlayer";
-import { VISUALIZER_CANVAS_HEIGHT, VISUALIZER_CANVAS_WIDTH, VISUALIZER_COLOR } from "../constants";
+import {VISUALIZER_CANVAS_HEIGHT, VISUALIZER_CANVAS_WIDTH, VISUALIZER_COLOR, VISUALIZER_MULTIPLIER } from "../constants";
 
 
 export default function AudioVisualizer()
@@ -23,7 +23,7 @@ export default function AudioVisualizer()
 
         for (let i = 0; i < numBars; ++i)
         {
-            const currentBarHeight = data[i] * 100;
+            const currentBarHeight = data[i] * VISUALIZER_MULTIPLIER;
             ctx.fillRect(i * barWidth, VISUALIZER_CANVAS_HEIGHT / 2 - currentBarHeight / 2, barWidth, currentBarHeight);
         }
 

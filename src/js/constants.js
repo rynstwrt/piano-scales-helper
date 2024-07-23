@@ -22,3 +22,4 @@ export const VISUALIZER_CANVAS_WIDTH = 100;
 export const VISUALIZER_CANVAS_HEIGHT = 60;
 export const VISUALIZER_COLOR = "#00e0b7";
 export const VISUALIZER_FFT_SIZE = 1024;
+export const VISUALIZER_MULTIPLIER = 90;
