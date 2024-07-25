@@ -56,16 +56,19 @@
   opacity: 0;
   transition: opacity 0.075s ease-in-out;
 }
-.piano-key .key-content .note-container {
+.piano-key .key-content .key-text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   right: 0;
   bottom: 7px;
   left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-.piano-key .key-content .note-container p {
+.piano-key .key-content .key-text-content .key-text-container {
+  pointer-events: none;
+}
+.piano-key .key-content .key-text-content .key-text-container p {
   position: relative;
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
@@ -79,7 +82,20 @@
   border-radius: 5px;
   user-select: none;
 }
-.piano-key.highlighted > .key-content > .note-container > p {
+.piano-key .key-content .key-text-content .key-text-container.scale-number-container p {
+  width: 17px;
+  height: 17px;
+  font-weight: 600;
+  font-size: 17px;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+}
+.piano-key .key-content .key-text-content .key-text-container.note-container {
+  margin-top: 3px;
+}
+.piano-key.highlighted .scale-number-container > p {
+  color: #00e0b7;
+}
+.piano-key.highlighted .note-container > p {
   background-color: rgba(0, 224, 183, 0.7);
 }
 

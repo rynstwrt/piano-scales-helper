@@ -24,6 +24,7 @@ export default class AudioPlayer
         this.#analyzer = new Tone.Analyser("waveform", VISUALIZER_FFT_SIZE);
 
         this.#synth = new Tone.Synth();
+        // this.#synth = new Tone.DuoSynth();
         this.setVolume(this.#volume);
 
         this.#synth.connect(this.#analyzer).toDestination();

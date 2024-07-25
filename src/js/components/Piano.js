@@ -12,7 +12,7 @@ import Util from "../Util";
 import AudioVisualizer from "./AudioVisualizer";
 
 
-export default function Piano({ scaleName })
+export default function Piano({ scaleName, showScaleNumbers })
 {
     let whiteKeys = [];
     let blackKeys = [];
@@ -42,6 +42,10 @@ export default function Piano({ scaleName })
             && foundFirstScaleKey
             && !foundLastScaleKey;
 
+        let scaleNumber = showScaleNumbers && shouldBeHighlighted ? scaleNotes.indexOf(note) + 1 : null;
+        if (scaleNumber && scaleNumber === 1 && !foundFirstScaleKeyThisIteration)
+            scaleNumber = 8;
+
         const isWhiteKey = !note.endsWith("#");
         if (isWhiteKey)
         {
@@ -51,6 +55,7 @@ export default function Piano({ scaleName })
                 note={note}
                 highlighted={shouldBeHighlighted}
                 octave={noteOctave}
+                scaleNumber={scaleNumber}
             />);
         }
         else
@@ -64,12 +69,15 @@ export default function Piano({ scaleName })
                 />);
             }
 
+            const scaleNumber = showScaleNumbers && shouldBeHighlighted ? scaleNotes.indexOf(note) + 1 : null;
+
             blackKeys.push(<Key
                 key={i}
                 color={"black"}
                 note={note}
                 highlighted={shouldBeHighlighted}
                 octave={noteOctave}
+                scaleNumber={scaleNumber}
             />);
         }
 

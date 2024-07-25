@@ -16,11 +16,12 @@ export default function App()
     }
 
     const [scale, setScale] = useState(initScale);
+    const [showScaleNumbers, setShowScaleNumbers] = useState(false);
 
     return (
         <main>
-            <Piano scaleName={scale} />
-            <Controls initialScale={scale} setScale={setScale} />
+            <Piano scaleName={scale} showScaleNumbers={showScaleNumbers} />
+            <Controls initialScale={scale} setScale={setScale} setShowScaleNumbers={setShowScaleNumbers} />
         </main>
     );
 }

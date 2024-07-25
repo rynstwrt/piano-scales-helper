@@ -3,66 +3,75 @@
 
 #controls
 {
-    background-color: $lighter-background;
     margin-top: 40px;
-    padding: 20px 15px;
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(black, 0.2);
 
-    .control-row
+    .control-section
     {
-        display: flex;
-        align-items: center;
-        font-family: $font-1;
-        min-height: 37px;
-        margin: 1px 0;
-        user-select: none;
+        background-color: $lighter-background;
+        padding: 20px 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(black, 0.2);
 
-        .control-label
+        &:not(&:last-of-type)
         {
-            color: white;
-            margin-right: 15px;
-            text-transform: uppercase;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            margin-bottom: 10px;
         }
 
-        select
+        .control-row
         {
-            font-family: inherit;
-            font-weight: 500;
-            font-size: 14px;
-            padding: 5px 5px;
-            border-radius: 5px;
-            text-transform: uppercase;
-            height: 24px;
-            min-width: 60px;
+            display: flex;
+            align-items: center;
+            font-family: $font-1;
+            min-height: 37px;
+            margin: 1px 0;
+            user-select: none;
 
-            &, option
+            .control-label
             {
-                text-align: center;
+                color: white;
+                margin-right: 15px;
+                text-transform: uppercase;
+                font-weight: 400;
+                letter-spacing: 0.5px;
             }
-        }
 
-        .action-button
-        {
-            font-weight: 500;
-            background-color: transparent;
-            border: 1px solid $accent-color;
-            color: $accent-color;
-            transition: background-color .2s ease-in-out, color .2s ease-in-out;
-            padding: 7px 12px;
-            font-family: inherit;
-            border-radius: 5px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-
-            &:hover
+            select
             {
-                background-color: $accent-color;
-                color: $lighter-background;
+                font-family: inherit;
+                font-weight: 500;
+                font-size: 14px;
+                padding: 5px 5px;
+                border-radius: 5px;
+                text-transform: uppercase;
+                height: 24px;
+                min-width: 60px;
+
+                &, option
+                {
+                    text-align: center;
+                }
+            }
+
+            .action-button
+            {
+                font-weight: 500;
+                background-color: transparent;
+                border: 1px solid $accent-color;
+                color: $accent-color;
+                transition: background-color .2s ease-in-out, color .2s ease-in-out;
+                padding: 7px 12px;
+                font-family: inherit;
+                border-radius: 5px;
+                cursor: pointer;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+
+                &:hover
+                {
+                    background-color: $accent-color;
+                    color: $lighter-background;
+                }
             }
         }
     }
@@ -137,6 +146,6 @@
         width: 150px;
         height: 35px;
         line-height: 1.7em;
-        margin-top: 15px;
+        //margin-top: 15px;
     }
 }

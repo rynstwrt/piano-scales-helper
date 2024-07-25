@@ -1,12 +1,17 @@
 #controls {
-  background-color: #282c30;
   margin-top: 40px;
-  padding: 20px 15px;
   width: 100%;
+}
+#controls .control-section {
+  background-color: #282c30;
+  padding: 20px 15px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-#controls .control-row {
+#controls .control-section:not(#controls .control-section:last-of-type) {
+  margin-bottom: 10px;
+}
+#controls .control-section .control-row {
   display: flex;
   align-items: center;
   font-family: "Josefin Sans", sans-serif;
@@ -14,14 +19,14 @@
   margin: 1px 0;
   user-select: none;
 }
-#controls .control-row .control-label {
+#controls .control-section .control-row .control-label {
   color: white;
   margin-right: 15px;
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 0.5px;
 }
-#controls .control-row select {
+#controls .control-section .control-row select {
   font-family: inherit;
   font-weight: 500;
   font-size: 14px;
@@ -31,10 +36,10 @@
   height: 24px;
   min-width: 60px;
 }
-#controls .control-row select, #controls .control-row select option {
+#controls .control-section .control-row select, #controls .control-section .control-row select option {
   text-align: center;
 }
-#controls .control-row .action-button {
+#controls .control-section .control-row .action-button {
   font-weight: 500;
   background-color: transparent;
   border: 1px solid #00e0b7;
@@ -47,7 +52,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-#controls .control-row .action-button:hover {
+#controls .control-section .control-row .action-button:hover {
   background-color: #00e0b7;
   color: #282c30;
 }
@@ -93,7 +98,6 @@
   width: 150px;
   height: 35px;
   line-height: 1.7em;
-  margin-top: 15px;
 }
 
 /*# sourceMappingURL=Controls.css.map */
