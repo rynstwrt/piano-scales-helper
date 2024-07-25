@@ -113,8 +113,7 @@ export default function Controls({ initialScale, setScale, setShowScaleNumbers }
 
             <div className={"control-section"}>
                 <div id={"scale-number-control-row"} className={"control-row"}>
-                    <label className={"control-label"}>Scale Numbers:</label>
-                    {/*<label>Show Scale Numbers:</label>*/}
+                    <label className={"control-label"}>Show Scale Numbers:</label>
                     <input id={"scale-number-checkbox"} type={"checkbox"} onChange={onScaleNumberCheckboxToggle} />
                 </div>
             </div>
